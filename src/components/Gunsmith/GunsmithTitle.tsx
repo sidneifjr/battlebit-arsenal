@@ -1,7 +1,25 @@
-export const GunsmithTitle = ({ weaponName }: any) => {
+import { useRouter } from 'next/navigation'
+import { Button } from '../ui/button'
+
+interface IGunsmithTitle {
+  weaponName: string
+}
+
+export const GunsmithTitle = ({ weaponName }: IGunsmithTitle) => {
+  const router = useRouter()
+
   return (
-    <h1 className="text-4xl border-b-2 pb-2">
-      <span className="">Gunsmith</span> / {weaponName}
-    </h1>
+    <div className="flex">
+      <div className="text-3xl border-b-2 pb-2 flex gap-2 flex-1">
+        <Button
+          className="mr-2"
+          variant={'outline'}
+          onClick={() => router.back()}
+        >
+          {'<'}
+        </Button>
+        <span>Gunsmith</span> / <strong>{weaponName}</strong>
+      </div>
+    </div>
   )
 }
