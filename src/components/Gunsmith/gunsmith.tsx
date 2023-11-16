@@ -43,12 +43,10 @@ interface IAttachments {
 
 import attachmentData from '../../json/attachments.json'
 import weaponData from '../../json/weapons.json'
-import { GunsmithAttachmentContainer } from './GunsmithAttachmentContainer'
-import { GunsmithAttachmentSlot } from './GunsmithAttachmentSlot'
-import { GunsmithContainer } from './GunsmithContainer'
-import { GunsmithTitle } from './GunsmithTitle'
 
-export const Gunsmith = ({ weaponName }: IGunsmith) => {
+import { Gunsmith } from '.'
+
+export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
   const [attachments, setAttachments] = useState<IAttachments>({
     optic: '-',
     topSight: '-',
@@ -164,33 +162,33 @@ export const Gunsmith = ({ weaponName }: IGunsmith) => {
   }
 
   return (
-    <GunsmithContainer>
-      <GunsmithTitle weaponName={getWeapon()!.name} />
+    <Gunsmith.Root>
+      <Gunsmith.Title weaponName={getWeapon()!.name} />
 
-      <GunsmithAttachmentContainer>
+      <Gunsmith.AttachmentContainer>
         <div className="flex gap-16">
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="optic"
             selectedAttachment={() => attachments.optic!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.optic}
           />
 
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="topSight"
             selectedAttachment={() => attachments.topSight!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.topSight}
           />
 
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="cantedSight"
             selectedAttachment={() => attachments.cantedSight!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.cantedSight}
           />
 
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="barrel"
             selectedAttachment={() => attachments.barrel!}
             onClick={(e: any) => handleAttachments(e)}
@@ -207,28 +205,28 @@ export const Gunsmith = ({ weaponName }: IGunsmith) => {
         />
 
         <div className="flex gap-16">
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="magazine"
             selectedAttachment={() => attachments.magazine!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.magazine}
           />
 
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="underbarrel"
             selectedAttachment={() => attachments.underbarrel!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.underbarrel}
           />
 
-          <GunsmithAttachmentSlot
+          <Gunsmith.AttachmentSlot
             slotType="sideRail"
             selectedAttachment={() => attachments.sideRail!}
             onClick={(e: any) => handleAttachments(e)}
             attachmentOptions={attachmentData.attachments.sideRail}
           />
         </div>
-      </GunsmithAttachmentContainer>
-    </GunsmithContainer>
+      </Gunsmith.AttachmentContainer>
+    </Gunsmith.Root>
   )
 }

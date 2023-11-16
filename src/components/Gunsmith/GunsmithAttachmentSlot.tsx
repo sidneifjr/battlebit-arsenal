@@ -39,13 +39,13 @@ export const GunsmithAttachmentSlot = ({
       onClick={handleDropdown}
     >
       <span
-        className={`w-12 h-12 border-2 border-white ${
+        className={`w-12 h-12 border-2 border-white transition ${
           validateSelectedAttachmentValue() ? 'bg-lime-400 border-lime-400' : ''
         }`}
       ></span>
 
       <div className="flex flex-col flex-1">
-        <strong className="w-[144px] h-[24px]">
+        <strong className="min-w-[144px] h-[24px]">
           {selectedAttachment ? selectedAttachment() : '-'}
         </strong>
 
