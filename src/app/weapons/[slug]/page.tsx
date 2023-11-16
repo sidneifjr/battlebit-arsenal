@@ -1,5 +1,4 @@
-import { Gunsmith } from '@/components/Gunsmith/gunsmith'
-import { Metadata } from 'next'
+import { GunsmithComponent } from '@/components/Gunsmith/Gunsmith'
 
 interface WeaponProps {
   params: {
@@ -8,10 +7,12 @@ interface WeaponProps {
   }
 }
 
-export const metadata: Metadata = {
-  title: 'Gunsmith',
+export async function generateMetadata({ params }: WeaponProps) {
+  return {
+    title: `${params.slug} | Gunsmith`,
+  }
 }
 
 export default function GunsmithPage({ params }: Readonly<WeaponProps>) {
-  return <Gunsmith weaponName={params.slug} />
+  return <GunsmithComponent weaponName={params.slug} />
 }
