@@ -1,20 +1,17 @@
-import { Gunsmith } from '@/components/gunsmith';
+import { Gunsmith } from '@/components/Gunsmith/gunsmith'
+import { Metadata } from 'next'
 
 interface WeaponProps {
   params: {
-    slug: string;
-    searchParams: {};
-  };
+    slug: string
+    searchParams: {}
+  }
+}
+
+export const metadata: Metadata = {
+  title: 'Gunsmith',
 }
 
 export default function GunsmithPage({ params }: Readonly<WeaponProps>) {
-  console.log(params);
-
-  return (
-    <>
-      <h1>Weapon Page: {params.slug}</h1>
-
-      <Gunsmith weapon={params.slug} />
-    </>
-  );
+  return <Gunsmith weaponName={params.slug} />
 }
