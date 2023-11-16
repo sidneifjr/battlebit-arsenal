@@ -125,6 +125,34 @@
       "fireRate": 600,
       "reloadTime": 3.1,
       "drawSpeed": 1
+    },
+    {
+      "id": 10,
+      "name": "M249",
+      "category": "Light Machine Gun",
+      "image": "/m249.webp",
+      "damage": 30,
+      "lightArmorDamage": 3,
+      "heavyArmorDamage": 0,
+      "capacity": 100,
+      "firingMode": ["Semi-Auto", "Full-Auto"],
+      "fireRate": 700,
+      "reloadTime": 6.67,
+      "drawSpeed": 1
+    },
+    {
+      "id": 11,
+      "name": "Ultimax-100",
+      "category": "Light Machine Gun",
+      "image": "/ultimax.png",
+      "damage": 29,
+      "lightArmorDamage": 5,
+      "heavyArmorDamage": 0,
+      "capacity": 100,
+      "firingMode": ["Semi-Auto", "Full-Auto"],
+      "fireRate": 600,
+      "reloadTime": 5.27,
+      "drawSpeed": 1
     }
   ]
 }
