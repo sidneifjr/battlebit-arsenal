@@ -197,9 +197,10 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
         </div>
 
         <Image
+          className="my-12"
           src={getWeapon()!.image}
           alt={getWeapon()!.name}
-          width={700}
+          width={750}
           height={700}
           quality={100}
         />
