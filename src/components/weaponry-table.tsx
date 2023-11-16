@@ -1,9 +1,9 @@
-import { useId } from 'react';
+import { useId } from 'react'
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 
-import data from '../json/weapons.json';
+import data from '../json/weapons.json'
 
 import {
   Table,
@@ -13,14 +13,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './ui/table';
+} from './ui/table'
 
 export const WeaponryTable = () => {
-  const ID = useId();
+  const ID = useId()
 
   const weaponry = data.weapons.map((weapon) => {
     const {
       id,
+      pageName,
       name,
       image,
       category,
@@ -30,21 +31,18 @@ export const WeaponryTable = () => {
       firingMode,
       reloadTime,
       drawSpeed,
-    } = weapon;
+    } = weapon
+
+    const adjustedWeaponPageName = pageName.replace(/\s/g, '-').toLowerCase()
 
     return (
       <TableRow key={id}>
         <TableCell>
-          <Image
-            src={image}
-            alt={name}
-            width={200}
-            height={200}
-          />
+          <Image src={image} alt={name} width={200} height={200} />
         </TableCell>
 
         <TableCell className="font-medium">
-          <Link href={`/weapons/${weapon.name}`}>{name}</Link>
+          <Link href={`/weapons/${adjustedWeaponPageName}`}>{name}</Link>
         </TableCell>
 
         <TableCell>{category}</TableCell>
@@ -58,13 +56,10 @@ export const WeaponryTable = () => {
         <TableCell>
           {firingMode.map((item) => {
             return (
-              <span
-                className="flex"
-                key={ID}
-              >
+              <span className="flex" key={ID}>
                 {item}
               </span>
-            );
+            )
           })}
         </TableCell>
 
@@ -72,8 +67,8 @@ export const WeaponryTable = () => {
 
         <TableCell>{drawSpeed}</TableCell>
       </TableRow>
-    );
-  });
+    )
+  })
 
   return (
     <Table className="max-w-[100rem] mx-auto">
@@ -95,5 +90,5 @@ export const WeaponryTable = () => {
 
       <TableBody>{weaponry}</TableBody>
     </Table>
-  );
-};
+  )
+}

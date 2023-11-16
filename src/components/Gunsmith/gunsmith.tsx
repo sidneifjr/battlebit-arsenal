@@ -59,7 +59,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
   const getWeapon = () => {
     return weaponData.weapons.find(
-      (weaponDataItem) => weaponDataItem.name === weaponName
+      (weaponDataItem) => weaponDataItem.pageName === weaponName
     )
   }
 
