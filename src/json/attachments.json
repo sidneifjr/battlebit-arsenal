@@ -1,0 +1,46 @@
+{
+  "attachments": {
+    "optic": [
+      {
+        "id": "optic-1",
+        "name": "Red Dot Sight"
+      },
+      {
+        "id": "optic-2",
+        "name": "Reflex Sight"
+      },
+      {
+        "id": "optic-3",
+        "name": "ACOG"
+      },
+      {
+        "id": "optic-4",
+        "name": "Flir"
+      },
+      {
+        "id": "optic-5",
+        "name": "2x Scope"
+      }
+    ],
+    "barrel": [
+      {
+        "id": "barrel-1",
+        "name": "Compensator"
+      },
+      {
+        "id": "barrel-2",
+        "name": "Flash Hider"
+      }
+    ],
+    "magazine": [
+      {
+        "id": "magazine-1",
+        "name": "Quick Magazine"
+      },
+      {
+        "id": "magazine-2",
+        "name": "Extended A"
+      }
+    ]
+  }
+}
