@@ -22,6 +22,34 @@
         "name": "2x Scope"
       }
     ],
+    "topSight": [
+      {
+        "id": "topSight-1",
+        "name": "Red Dot Sight"
+      },
+      {
+        "id": "optic-2",
+        "name": "Holo Sight"
+      }
+    ],
+    "cantedSight": [
+      {
+        "id": "cantedSight-1",
+        "name": "Ironsight"
+      },
+      {
+        "id": "cantedSight-2",
+        "name": "Canted Red Dot Sight"
+      },
+      {
+        "id": "cantedSight-3",
+        "name": "Holo Dot Sight"
+      },
+      {
+        "id": "cantedSight-4",
+        "name": "Canted F U Sight"
+      }
+    ],
     "barrel": [
       {
         "id": "barrel-1",
@@ -30,6 +58,46 @@
       {
         "id": "barrel-2",
         "name": "Flash Hider"
+      }
+    ],
+    "underbarrel": [
+      {
+        "id": "underbarrel-1",
+        "name": "Vertical Grip"
+      },
+      {
+        "id": "underbarrel-2",
+        "name": "S E-5 Grip"
+      },
+      {
+        "id": "underbarrel-3",
+        "name": "B-25 URK"
+      }
+    ],
+    "sideRail": [
+      {
+        "id": "sideRail-1",
+        "name": "Flashlight"
+      },
+      {
+        "id": "sideRail-2",
+        "name": "Tactical Flashlight"
+      },
+      {
+        "id": "sideRail-3",
+        "name": "Redlaser"
+      },
+      {
+        "id": "sideRail-4",
+        "name": "Greenlaser"
+      },
+      {
+        "id": "sideRail-5",
+        "name": "Rangefinder"
+      },
+      {
+        "id": "sideRail-6",
+        "name": "Searchlight"
       }
     ],
     "magazine": [
