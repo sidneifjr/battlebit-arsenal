@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import { Progress } from '../ui/progress'
 
 interface IStats {
   stats: {
@@ -33,12 +34,7 @@ export const GunsmithStats = ({ stats }: IStats) => {
               {key}: {value}
             </span>
 
-            <div className="h-2 max-w-[100%] border-white border-[1px] rounded-xl">
-              <div
-                className="bg-white h-full"
-                style={{ width: `${value < 100 ? value : value / 12}%` }}
-              ></div>
-            </div>
+            <Progress value={value < 100 ? value : value / 12} />
           </li>
         ))}
       </ul>
