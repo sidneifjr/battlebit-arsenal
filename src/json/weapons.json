@@ -50,7 +50,7 @@
       "name": "SCAR-H",
       "pageName": "scar-h",
       "category": "Assault Rifle",
-      "image": "/scarh.webp",
+      "image": "/scarh.png",
       "damage": 42,
       "lightArmorDamage": 6,
       "heavyArmorDamage": 0,
@@ -164,6 +164,38 @@
       "fireRate": 600,
       "reloadTime": 5.27,
       "drawSpeed": 1
+    },
+    {
+      "id": 10,
+      "name": "L96",
+      "pageName": "l96",
+      "category": "Sniper Rifle",
+      "image": "/l96.webp",
+      "damage": 65,
+      "lightArmorDamage": 10,
+      "heavyArmorDamage": 1,
+      "capacity": 10,
+      "firingMode": ["Bolt-Action"],
+      "boltActionSpeed": 1,
+      "fireRate": 1,
+      "reloadTime": 3.67,
+      "drawSpeed": 0.9
+    },
+    {
+      "id": 11,
+      "name": "M200",
+      "pageName": "m200",
+      "category": "Sniper Rifle",
+      "image": "/m200.webp",
+      "damage": 70,
+      "lightArmorDamage": 15,
+      "heavyArmorDamage": 5,
+      "capacity": 7,
+      "firingMode": ["Bolt-Action"],
+      "boltActionSpeed": 0.8,
+      "fireRate": 1,
+      "reloadTime": 3.73,
+      "drawSpeed": 0.9
     }
   ]
 }
