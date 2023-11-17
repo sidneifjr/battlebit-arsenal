@@ -6,7 +6,7 @@ interface IGunsmithRoot {
 
 export const GunsmithRoot = ({ children }: IGunsmithRoot) => {
   return (
-    <section className="max-w-full p-4 flex flex-col flex-1">
+    <section className="min-h-screen max-w-full p-4 flex flex-col flex-1">
       {children}
     </section>
   )
