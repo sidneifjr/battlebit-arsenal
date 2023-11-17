@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function WeaponsLoading() {
+export default function RootLoading() {
   return (
     <section className="min-h-[100vh] flex flex-1 justify-center items-center">
       <Image
