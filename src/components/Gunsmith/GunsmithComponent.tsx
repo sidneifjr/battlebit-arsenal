@@ -40,15 +40,9 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
     )
   }
 
-  const {
-    damage,
-    lightArmorDamage,
-    heavyArmorDamage,
-    capacity,
-    fireRate,
-    reloadTime,
-    drawSpeed,
-  } = getWeapon()
+  // @ts-expect-error
+  // prettier-ignore
+  const {damage, lightArmorDamage, heavyArmorDamage, capacity, fireRate, reloadTime, drawSpeed} = getWeapon()
 
   const handleAttachments = (e: any) => {
     e.preventDefault()
