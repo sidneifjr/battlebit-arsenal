@@ -9,7 +9,7 @@ interface WeaponProps {
 
 export async function generateMetadata({ params }: WeaponProps) {
   return {
-    title: `${params.slug} | Gunsmith`,
+    title: `${params.slug.toUpperCase()} | Gunsmith`,
   }
 }
 
