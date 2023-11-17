@@ -1,4 +1,4 @@
-import { GunsmithComponent } from '@/components/Gunsmith/Gunsmith'
+import { GunsmithComponent } from '@/components/Gunsmith/Gunsmith.tsx'
 
 interface WeaponProps {
   params: {
