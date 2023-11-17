@@ -4,8 +4,8 @@ import { WeaponryTable } from '@/components/weaponry-table'
 export default async function Home() {
   const serverURL = 'https://publicapi.battlebit.cloud/Servers/GetServerList'
 
-  const getServersData = await fetch(serverURL).then((response) =>
-    response.json()
+  const getServersData = await fetch(serverURL, { cache: 'no-store' }).then(
+    (response) => response.json()
   )
 
   return (
