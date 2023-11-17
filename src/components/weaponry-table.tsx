@@ -1,9 +1,9 @@
-import { useId } from 'react'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
 import data from '../json/weapons.json'
+
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   Table,
@@ -16,8 +16,6 @@ import {
 } from './ui/table'
 
 export const WeaponryTable = () => {
-  const ID = useId()
-
   const weaponry = data.weapons.map((weapon) => {
     const {
       id,
@@ -37,12 +35,12 @@ export const WeaponryTable = () => {
 
     return (
       <TableRow key={id}>
-        <TableCell>
-          <Image src={image} alt={name} width={200} height={200} />
-        </TableCell>
-
         <TableCell className="font-medium">
-          <Link href={`/weapons/${adjustedWeaponPageName}`}>{name}</Link>
+          <Link href={`/weapons/${adjustedWeaponPageName}`}>
+            {' '}
+            <Image src={image} alt={name} width={200} height={200} />
+            {name}
+          </Link>
         </TableCell>
 
         <TableCell>{category}</TableCell>
@@ -56,7 +54,7 @@ export const WeaponryTable = () => {
         <TableCell>
           {firingMode.map((item) => {
             return (
-              <span className="flex" key={ID}>
+              <span className="flex" key={uuidv4()}>
                 {item}
               </span>
             )
@@ -72,11 +70,12 @@ export const WeaponryTable = () => {
 
   return (
     <Table className="max-w-[100rem] mx-auto">
-      <TableCaption>Firearms available.</TableCaption>
+      <TableCaption className="text-3xl text-white font-bold mb-4 caption-top">
+        Firearms available
+      </TableCaption>
 
       <TableHeader>
         <TableRow>
-          <TableHead></TableHead>
           <TableHead>Name</TableHead>
           <TableHead>Damage</TableHead>
           <TableHead>Fire rate</TableHead>
