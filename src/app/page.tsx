@@ -1,5 +1,5 @@
 import { ServerInfo } from '@/components/server-info'
-import { WeaponryTable } from '@/components/weaponry-table'
+import { WeaponryList } from '@/components/weaponry-list'
 
 export default async function Home() {
   const serverURL = 'https://publicapi.battlebit.cloud/Servers/GetServerList'
@@ -20,7 +20,7 @@ export default async function Home() {
     <section className="flex flex-col gap-3">
       <ServerInfo data={getServersData} />
 
-      <WeaponryTable />
+      <WeaponryList />
     </section>
   )
 }
