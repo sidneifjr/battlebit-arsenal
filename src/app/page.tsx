@@ -4,15 +4,23 @@ import { WeaponryTable } from '@/components/weaponry-table'
 export default async function Home() {
   const serverURL = 'https://publicapi.battlebit.cloud/Servers/GetServerList'
 
-  const getServersData = await fetch(serverURL, { cache: 'no-store' }).then(
-    (response) => response.json()
-  )
+  let getServersData
+
+  try {
+    getServersData = await fetch(serverURL, { cache: 'no-store' }).then(
+      (response) => response.json()
+    )
+  } catch (err) {
+    console.error(
+      'Unable to access the official Battlebit API; reverting to fallback values.'
+    )
+  }
 
   return (
-    <main className="flex flex-col gap-3">
+    <section className="flex flex-col gap-3">
       <ServerInfo data={getServersData} />
 
       <WeaponryTable />
-    </main>
+    </section>
   )
 }

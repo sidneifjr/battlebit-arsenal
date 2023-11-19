@@ -21,6 +21,10 @@ interface IData {
 
 export const ServerInfo = (data: IData) => {
   const getTotalPlayerCount = () => {
+    if (data.data === undefined) {
+      return 0
+    }
+
     const totalPlayers = data.data.reduce(
       (accumulator: number, item: DataProps) => accumulator + item.Players,
       0
