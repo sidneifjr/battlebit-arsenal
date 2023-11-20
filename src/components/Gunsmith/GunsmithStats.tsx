@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Progress } from '../ui/progress'
 
 interface IStats {
   stats: {
@@ -10,6 +9,16 @@ interface IStats {
     fireRate: number
     reloadTime: number
     drawSpeed: number
+    verticalRecoil: number
+    horizontalRecoil: number
+    firstShotKick: number
+    velocity: number
+    accuracy: number
+    soundSpread: number
+    muzzleFlashScale: number
+    control: number
+    aimDownTime: number
+    runningSpeed: number
   }
 }
 
@@ -17,15 +26,11 @@ export const GunsmithStats = ({ stats }: IStats) => {
   const getKeyValuePairsFromStats = Object.entries(stats)
 
   return (
-    <div className="max-w-xs pt-32">
-      <strong>Stats</strong>
+    <div className="max-w-xs pt-16">
+      <strong className="pb-2 block">Stats</strong>
 
       {/**
-       * 1) Pegar apenas as propriedades relevantes, as estatísticas da arma.
-       *
-       * Talvez o componente pai deva passar apenas essas propriedades.
-       *
-       * 2) Animar as barras de stats, ao entrar na página ou entrar no viewport do usuário.
+       * Animar as barras de stats, ao entrar na página ou entrar no viewport do usuário.
        */}
       <ul>
         {getKeyValuePairsFromStats.map(([key, value]) => (
@@ -34,7 +39,17 @@ export const GunsmithStats = ({ stats }: IStats) => {
               {key}: {value}
             </span>
 
-            <Progress value={value < 100 ? value : value / 12} />
+            {/* <Progress
+              className="h-1 "
+              value={value < 100 ? value : value / 12}
+            /> */}
+
+            <div className="h-1 max-w-[100%] border-white border-[1px] rounded-xl">
+              <div
+                className="bg-white h-full"
+                style={{ width: `${value < 100 ? value : value / 12}%` }}
+              ></div>
+            </div>
           </li>
         ))}
       </ul>

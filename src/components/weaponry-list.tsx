@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+
 import { MotionWrapper } from './motion-wrapper'
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
@@ -20,14 +21,23 @@ export const WeaponryList = () => {
       id,
       pageName,
       name,
-      image,
+      icon,
       category,
       damage,
       fireRate,
       capacity,
       firingMode,
       reloadTime,
-      drawSpeed,
+      verticalRecoil,
+      horizontalRecoil,
+      firstShotKick,
+      velocity,
+      accuracy,
+      soundSpread,
+      muzzleFlashScale,
+      control,
+      aimDownTime,
+      runningSpeed,
     } = weapon
 
     const adjustedWeaponPageName = pageName.replace(/\s/g, '-').toLowerCase()
@@ -37,7 +47,13 @@ export const WeaponryList = () => {
         <CardHeader className="relative">
           <div className="flex gap-4">
             <Link href={`/weapons/${adjustedWeaponPageName}`}>
-              <Image src={image} alt={name} width={200} height={200} />
+              <Image
+                src={icon}
+                alt={name}
+                width={200}
+                height={100}
+                quality={100}
+              />
             </Link>
 
             <div className="flex flex-col gap-0.5 flex-1">
@@ -67,26 +83,66 @@ export const WeaponryList = () => {
           <Separator className="absolute right-0 bottom-0 left-0 bg-white" />
         </CardHeader>
 
-        <CardContent className="pt-4 flex flex-col gap-1">
-          <p>
-            <strong>Damage:</strong> {damage}
-          </p>
+        <CardContent className="pt-4 flex gap-2 justify-between">
+          <div className="flex flex-col gap-1">
+            <p className="text-sm">
+              <strong>Damage:</strong> {damage}
+            </p>
 
-          <p>
-            <strong>Fire Rate:</strong> {fireRate}
-          </p>
+            <p className="text-sm">
+              <strong>Fire Rate:</strong> {fireRate}
+            </p>
 
-          <p>
-            <strong>Capacity:</strong> {capacity}
-          </p>
+            <p className="text-sm">
+              <strong>Vertical recoil:</strong> {verticalRecoil}
+            </p>
 
-          <p>
-            <strong>Reload time:</strong> {reloadTime}
-          </p>
+            <p className="text-sm">
+              <strong>Horizontal recoil:</strong> {horizontalRecoil}
+            </p>
 
-          <p>
-            <strong>Draw speed:</strong> {drawSpeed}
-          </p>
+            <p className="text-sm">
+              <strong>First shot kick:</strong> {firstShotKick}
+            </p>
+
+            <p className="text-sm">
+              <strong>Capacity:</strong> {capacity}
+            </p>
+
+            <p className="text-sm">
+              <strong>Reload time:</strong> {reloadTime}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <p className="text-sm">
+              <strong>Velocity:</strong> {velocity}
+            </p>
+
+            <p className="text-sm">
+              <strong>Accuracy:</strong> {accuracy}
+            </p>
+
+            <p className="text-sm">
+              <strong>Sound Spread:</strong> {soundSpread}
+            </p>
+
+            <p className="text-sm">
+              <strong>Muzzle flash scale:</strong> {muzzleFlashScale}
+            </p>
+
+            <p className="text-sm">
+              <strong>Control:</strong> {control}
+            </p>
+
+            <p className="text-sm">
+              <strong>Aim down time:</strong> {aimDownTime}
+            </p>
+
+            <p className="text-sm">
+              <strong>Running speed:</strong> {runningSpeed}
+            </p>
+          </div>
         </CardContent>
 
         {/* <CardFooter className="py-4 relative">
@@ -106,6 +162,22 @@ export const WeaponryList = () => {
       exit={{ y: '-25%', opacity: 0 }}
       style={{ width: '100%', margin: '0 auto' }}
     >
+      {/* <div className="w-full max-w-[100rem] mx-auto mb-4 flex justify-end">
+        <Select>
+          <SelectTrigger className="w-[200px] rounded-sm">
+            <SelectValue placeholder="Sort" />
+          </SelectTrigger>
+
+          <SelectContent>
+            <SelectItem value="Alphabetical">Alphabetical</SelectItem>
+            <SelectItem value="Damage">Damage</SelectItem>
+            <SelectItem value="Fire rate">Fire rate</SelectItem>
+            <SelectItem value="Capacity">Capacity</SelectItem>
+            <SelectItem value="Reload speed">Reload speed</SelectItem>
+          </SelectContent>
+        </Select>
+      </div> */}
+
       <div className="w-full max-w-[100rem] mx-auto flex gap-4 flex-wrap">
         {weaponCards}
       </div>
