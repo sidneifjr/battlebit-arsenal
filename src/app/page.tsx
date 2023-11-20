@@ -18,13 +18,18 @@ export default async function Home() {
 
   return (
     <section className="flex flex-col gap-3">
-      <h1 className="text-7xl pt-12 mx-auto">
-        <strong>Battlebit Arsenal</strong>
+      <h1 className="w-full max-w-[460px] text-7xl pt-12 relative mx-auto">
+        <strong className="flex flex-col">
+          <span className="self-start">Battlebit</span>
+          <span className="self-end">Arsenal</span>
+        </strong>
       </h1>
 
       <ServerInfo data={getServersData} />
 
       <WeaponryList />
+
+      {/* <BottomMenu /> */}
     </section>
   )
 }

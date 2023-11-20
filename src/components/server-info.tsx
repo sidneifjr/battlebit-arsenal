@@ -34,8 +34,8 @@ export const ServerInfo = (data: IData) => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <h1 className="text-4xl text-center my-8">
+    <div className="max-w-3xl mx-auto mb-8">
+      <h1 className="text-4xl text-center mt-8">
         There are <span className="text-cyan-400">{getTotalPlayerCount()}</span>{' '}
         players currently <span className="text-cyan-400">in game</span>.
       </h1>
