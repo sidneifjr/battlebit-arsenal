@@ -42,7 +42,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
   // @ts-expect-error
   // prettier-ignore
-  const {damage, lightArmorDamage, heavyArmorDamage, capacity, fireRate, reloadTime, drawSpeed} = getWeapon()
+  const {damage, lightArmorDamage, heavyArmorDamage, fireRate, reloadTime, verticalRecoil, horizontalRecoil, firstShotKick, velocity, accuracy, soundSpread, muzzleFlashScale, control, aimDownTime, runningSpeed, capacity, drawSpeed} = getWeapon()
 
   const handleAttachments = (e: any) => {
     e.preventDefault()
@@ -152,9 +152,19 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
             damage,
             lightArmorDamage,
             heavyArmorDamage,
-            capacity,
             fireRate,
             reloadTime,
+            verticalRecoil,
+            horizontalRecoil,
+            firstShotKick,
+            velocity,
+            accuracy,
+            soundSpread,
+            muzzleFlashScale,
+            control,
+            aimDownTime,
+            runningSpeed,
+            capacity,
             drawSpeed,
           }}
         />
@@ -191,11 +201,11 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
           </div>
 
           <Image
-            className="my-12"
-            src={getWeapon()!.image}
+            className="my-4"
+            src={getWeapon()!.icon}
             alt={getWeapon()!.name}
-            width={750}
-            height={700}
+            width={480}
+            height={170}
             quality={100}
           />
 
