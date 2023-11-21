@@ -3,23 +3,75 @@
     "optic": [
       {
         "id": "optic-1",
-        "name": "Red Dot Sight"
+        "name": "Red Dot Sight",
+        "statModifier": [
+          {
+            "stat": "aimDownTime",
+            "modifier": -0.01
+          },
+          {
+            "stat": "control",
+            "modifier": -0.01
+          },
+          {
+            "stat": "drawSpeed",
+            "modifier": -0.01
+          }
+        ]
       },
       {
         "id": "optic-2",
-        "name": "Reflex Sight"
+        "name": "Reflex Sight",
+        "statModifier": [
+          {
+            "stat": "aimDownTime",
+            "modifier": -0.01
+          },
+          {
+            "stat": "control",
+            "modifier": -0.01
+          },
+          {
+            "stat": "drawSpeed",
+            "modifier": -0.01
+          }
+        ]
       },
       {
         "id": "optic-3",
-        "name": "ACOG"
+        "name": "ACOG",
+        "statModifier": [
+          {
+            "stat": "aimDownTime",
+            "modifier": -0.05
+          },
+          {
+            "stat": "control",
+            "modifier": -0.05
+          },
+          {
+            "stat": "drawSpeed",
+            "modifier": -0.05
+          }
+        ]
       },
       {
         "id": "optic-4",
-        "name": "Flir"
-      },
-      {
-        "id": "optic-5",
-        "name": "2x Scope"
+        "name": "Flir",
+        "statModifier": [
+          {
+            "stat": "aimDownTime",
+            "modifier": -0.025
+          },
+          {
+            "stat": "control",
+            "modifier": -0.025
+          },
+          {
+            "stat": "drawSpeed",
+            "modifier": -0.025
+          }
+        ]
       }
     ],
     "topSight": [

@@ -1,20 +1,50 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface IGunsmith {
   weaponName: string
 }
 
+interface IOptic {
+  name: string
+  statModifier: []
+}
+
 interface IAttachments {
-  optic?: string
+  optic?: IOptic
   topSight?: string
   cantedSight?: string
   barrel?: string
   magazine?: string
   underbarrel?: string
   sideRail?: string
+}
+
+interface IWeaponInfo {
+  id: number
+  pageName: string
+  name: string
+  icon: string
+  category: string
+  damage: number
+  lightArmorDamage: number
+  heavyArmorDamage: number
+  capacity: number
+  fireRate: number
+  reloadTime: number
+  drawSpeed: number
+  verticalRecoil: number
+  horizontalRecoil: number
+  firstShotKick: number
+  velocity: number
+  accuracy: number
+  soundSpread: number
+  muzzleFlashScale: number
+  control: number
+  aimDownTime: number
+  runningSpeed: number
 }
 
 import attachmentData from '../../json/attachments.json'
@@ -24,8 +54,18 @@ import { Gunsmith } from '.'
 import { GunsmithStats } from './GunsmithStats'
 
 export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
+  const gun = weaponData.weapons.find(
+    (weaponDataItem) => weaponDataItem.pageName === weaponName
+  )
+
+  const [originalWeapon, setOriginalWeapon] = useState<IWeaponInfo>(gun!) // Este estado deve ser mantido como referência para os cálculos; sendo o valor original, não deve ser alterado.
+  const [weapon, setWeapon] = useState<IWeaponInfo>(gun!) // Este é para exibir o valor alterado e atualizado em tela.
+
   const [attachments, setAttachments] = useState<IAttachments>({
-    optic: '-',
+    optic: {
+      name: '-',
+      statModifier: [],
+    },
     topSight: '-',
     cantedSight: '-',
     barrel: '-',
@@ -34,15 +74,58 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
     sideRail: '-',
   })
 
-  const getWeapon = () => {
-    return weaponData.weapons.find(
-      (weaponDataItem) => weaponDataItem.pageName === weaponName
-    )
-  }
+  const {
+    damage,
+    lightArmorDamage,
+    heavyArmorDamage,
+    fireRate,
+    reloadTime,
+    verticalRecoil,
+    horizontalRecoil,
+    firstShotKick,
+    velocity,
+    accuracy,
+    soundSpread,
+    muzzleFlashScale,
+    control,
+    aimDownTime,
+    runningSpeed,
+    capacity,
+    drawSpeed,
+  } = weapon
 
-  // @ts-expect-error
-  // prettier-ignore
-  const {damage, lightArmorDamage, heavyArmorDamage, fireRate, reloadTime, verticalRecoil, horizontalRecoil, firstShotKick, velocity, accuracy, soundSpread, muzzleFlashScale, control, aimDownTime, runningSpeed, capacity, drawSpeed} = getWeapon()
+  // Toda vez que os attachments forem alterados, os valores da arma serão recalculados para exibir o novo valor em tela.
+  useEffect(() => {
+    const applyModifiers = (originalValues: IWeaponInfo, modifiers: any[]) => {
+      return modifiers.reduce(
+        (
+          modifiedValues: { [x: string]: any },
+          modifier: { stat: any; modifier: any }
+        ) => {
+          const { stat, modifier: statModifier } = modifier
+
+          modifiedValues[stat] += statModifier
+          return modifiedValues
+        },
+        { ...originalValues }
+      )
+    }
+
+    const updateWeaponStats = () => {
+      const { optic } = attachments
+
+      if (optic !== undefined && optic.name !== '-') {
+        const updatedWeapon = applyModifiers(originalWeapon, optic.statModifier)
+
+        setWeapon(updatedWeapon)
+      }
+    }
+
+    updateWeaponStats()
+
+    console.log(attachments)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attachments, originalWeapon])
 
   const handleAttachments = (e: any) => {
     e.preventDefault()
@@ -58,7 +141,13 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
         setAttachments((prevState) => ({
           ...prevState,
-          optic: opticAttachmentFromJSON!.name,
+          optic: {
+            name: opticAttachmentFromJSON!.name,
+            statModifier: opticAttachmentFromJSON?.statModifier.map((item) => ({
+              stat: item.stat,
+              modifier: item.modifier,
+            })),
+          },
         }))
 
         break
@@ -144,7 +233,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
   return (
     <Gunsmith.Root>
-      <Gunsmith.Title weaponName={getWeapon()!.name} />
+      <Gunsmith.Title weaponName={weapon.name} />
 
       <div className="flex">
         <GunsmithStats
@@ -173,7 +262,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
               slotType="optic"
-              selectedAttachment={() => attachments.optic!}
+              selectedAttachment={() => attachments.optic!.name}
               onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={attachmentData.attachments.optic}
             />
@@ -202,8 +291,8 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
           <Image
             className="my-4"
-            src={getWeapon()!.icon}
-            alt={getWeapon()!.name}
+            src={weapon.icon}
+            alt={weapon.name}
             width={480}
             height={170}
             quality={100}

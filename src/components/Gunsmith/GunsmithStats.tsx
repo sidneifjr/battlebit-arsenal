@@ -36,15 +36,14 @@ export const GunsmithStats = ({ stats }: IStats) => {
         {getKeyValuePairsFromStats.map(([key, value]) => (
           <li key={uuidv4()} className="pb-2">
             <span className="pb-1 capitalize block">
-              {key}: {value}
+              {key}: {value.toFixed(2)}
             </span>
 
-            {/* <Progress
-              className="h-1 "
-              value={value < 100 ? value : value / 12}
-            /> */}
+            {/**
+             * Definir max e min value, semelhante a um input de range.
+             */}
 
-            <div className="h-1 max-w-[100%] border-white border-[1px] rounded-xl">
+            <div className="h-1 max-w-[100%] bg-gray-500 rounded-xl">
               <div
                 className="bg-white h-full"
                 style={{ width: `${value < 100 ? value : value / 12}%` }}
