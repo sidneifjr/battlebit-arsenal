@@ -43,7 +43,7 @@ export const GunsmithStats = ({ stats }: IStats) => {
              * Definir max e min value, semelhante a um input de range.
              */}
 
-            <div className="h-1 max-w-[100%] bg-gray-500 rounded-xl">
+            <div className="h-0.5 max-w-[100%] bg-gray-500 rounded-xl">
               <div
                 className="bg-white h-full"
                 style={{ width: `${value < 100 ? value : value / 12}%` }}

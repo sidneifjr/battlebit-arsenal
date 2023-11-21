@@ -12,14 +12,24 @@ interface IOptic {
   statModifier: []
 }
 
+interface ISideRail {
+  name: string
+  statModifier: []
+}
+
+interface IMagazine {
+  name: string
+  statModifier: []
+}
+
 interface IAttachments {
   optic?: IOptic
   topSight?: string
   cantedSight?: string
   barrel?: string
-  magazine?: string
+  magazine?: IMagazine
   underbarrel?: string
-  sideRail?: string
+  sideRail?: ISideRail
 }
 
 interface IWeaponInfo {
@@ -69,9 +79,15 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
     topSight: '-',
     cantedSight: '-',
     barrel: '-',
-    magazine: '-',
+    magazine: {
+      name: '-',
+      statModifier: [],
+    },
     underbarrel: '-',
-    sideRail: '-',
+    sideRail: {
+      name: '-',
+      statModifier: [],
+    },
   })
 
   const {
@@ -97,34 +113,53 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
   // Toda vez que os attachments forem alterados, os valores da arma serão recalculados para exibir o novo valor em tela.
   useEffect(() => {
     const applyModifiers = (originalValues: IWeaponInfo, modifiers: any[]) => {
-      return modifiers.reduce(
-        (
-          modifiedValues: { [x: string]: any },
-          modifier: { stat: any; modifier: any }
-        ) => {
-          const { stat, modifier: statModifier } = modifier
+      if (modifiers !== undefined) {
+        return modifiers.reduce(
+          (
+            modifiedValues: { [x: string]: any },
+            modifier: { stat: any; modifier: any }
+          ) => {
+            const { stat, modifier: statModifier } = modifier
 
-          modifiedValues[stat] += statModifier
-          return modifiedValues
-        },
-        { ...originalValues }
-      )
+            modifiedValues[stat] += statModifier
+            return modifiedValues
+          },
+          { ...originalValues }
+        )
+      } else {
+        return originalValues
+      }
     }
 
     const updateWeaponStats = () => {
-      const { optic } = attachments
+      const { optic, magazine, sideRail } = attachments
 
       if (optic !== undefined && optic.name !== '-') {
         const updatedWeapon = applyModifiers(originalWeapon, optic.statModifier)
 
         setWeapon(updatedWeapon)
       }
+
+      if (magazine !== undefined && magazine.name !== '-') {
+        const updatedWeapon = applyModifiers(
+          originalWeapon,
+          magazine.statModifier
+        )
+
+        setWeapon(updatedWeapon)
+      }
+
+      if (sideRail !== undefined && sideRail.name !== '-') {
+        const updatedWeapon = applyModifiers(
+          originalWeapon,
+          sideRail.statModifier
+        )
+
+        setWeapon(updatedWeapon)
+      }
     }
 
     updateWeaponStats()
-
-    console.log(attachments)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attachments, originalWeapon])
 
   const handleAttachments = (e: any) => {
@@ -139,16 +174,29 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
           (attachmentsItem) => attachmentsItem.name === attachmentSelected
         )
 
-        setAttachments((prevState) => ({
-          ...prevState,
-          optic: {
-            name: opticAttachmentFromJSON!.name,
-            statModifier: opticAttachmentFromJSON?.statModifier.map((item) => ({
-              stat: item.stat,
-              modifier: item.modifier,
-            })),
-          },
-        }))
+        if (opticAttachmentFromJSON?.statModifier !== 'none') {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            optic: {
+              name: opticAttachmentFromJSON!.name,
+              statModifier: opticAttachmentFromJSON?.statModifier.map(
+                (item: { stat: any; modifier: any }) => ({
+                  stat: item.stat,
+                  modifier: item.modifier,
+                })
+              ),
+            },
+          }))
+        } else {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            optic: {
+              name: opticAttachmentFromJSON!.name,
+            },
+          }))
+        }
 
         break
 
@@ -196,10 +244,29 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
             (attachmentsItem) => attachmentsItem.name === attachmentSelected
           )
 
-        setAttachments((prevState) => ({
-          ...prevState,
-          magazine: magazineAttachmentFromJSON!.name,
-        }))
+        if (magazineAttachmentFromJSON?.statModifier !== 'none') {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            magazine: {
+              name: magazineAttachmentFromJSON!.name,
+              statModifier: magazineAttachmentFromJSON?.statModifier.map(
+                (item: { stat: any; modifier: any }) => ({
+                  stat: item.stat,
+                  modifier: item.modifier,
+                })
+              ),
+            },
+          }))
+        } else {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            magazine: {
+              name: magazineAttachmentFromJSON!.name,
+            },
+          }))
+        }
 
         break
 
@@ -222,10 +289,29 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
             (attachmentsItem) => attachmentsItem.name === attachmentSelected
           )
 
-        setAttachments((prevState) => ({
-          ...prevState,
-          sideRail: sideRailAttachmentFromJSON!.name,
-        }))
+        if (sideRailAttachmentFromJSON?.statModifier !== 'none') {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            sideRail: {
+              name: sideRailAttachmentFromJSON!.name,
+              statModifier: sideRailAttachmentFromJSON?.statModifier.map(
+                (item: { stat: any; modifier: any }) => ({
+                  stat: item.stat,
+                  modifier: item.modifier,
+                })
+              ),
+            },
+          }))
+        } else {
+          setAttachments((prevState) => ({
+            ...prevState,
+
+            sideRail: {
+              name: sideRailAttachmentFromJSON!.name,
+            },
+          }))
+        }
 
         break
     }
@@ -301,7 +387,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
               slotType="magazine"
-              selectedAttachment={() => attachments.magazine!}
+              selectedAttachment={() => attachments.magazine!.name}
               onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={attachmentData.attachments.magazine}
             />
@@ -315,7 +401,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
             <Gunsmith.AttachmentSlot
               slotType="sideRail"
-              selectedAttachment={() => attachments.sideRail!}
+              selectedAttachment={() => attachments.sideRail!.name}
               onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={attachmentData.attachments.sideRail}
             />

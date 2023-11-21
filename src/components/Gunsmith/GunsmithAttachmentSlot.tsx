@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MotionWrapper } from '../motion-wrapper'
 
 interface IOption {
   id: string
@@ -55,20 +56,31 @@ export const GunsmithAttachmentSlot = ({
       </div>
 
       {isDropdownActive ? (
-        <ul
-          className="bg-black w-full border-2 py-1 px-2 absolute top-[100%]"
-          data-slot={slotType}
+        <MotionWrapper
+          initial={{ y: '25%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          transition={{ duration: 0.25, ease: [0.33, 1, 0.68, 1] }}
+          exit={{ y: '-25%', opacity: 0 }}
+          style={{ width: '100%', position: 'absolute', bottom: 0, zIndex: 10 }}
         >
-          {attachmentOptions.map((option: IOption) => {
-            return (
-              <li key={option.id}>
-                <a className="py-1 block" href="#" onClick={onClick}>
-                  {option.name}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+          <ul
+            className="w-full bg-black rounded-xl border-2 absolute top-[100%]"
+            data-slot={slotType}
+          >
+            {attachmentOptions.map((option: IOption) => {
+              return (
+                <li
+                  key={option.id}
+                  className="block hover:bg-white hover:text-black transition"
+                >
+                  <a className="py-1 px-2 block" href="#" onClick={onClick}>
+                    {option.name}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </MotionWrapper>
       ) : (
         ''
       )}
