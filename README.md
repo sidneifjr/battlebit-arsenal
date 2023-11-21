@@ -1,32 +1,53 @@
 # Battlebit Arsenal
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+O objetivo é criar uma aplicação web que permita a criação e compartilhamento de builds e loadouts para Battlebit Remastered.
+
+A intenção é permitir que o usuário possa definir seus armamentos, tomar decisões informadas sobre seu equipamento e compartilhar com seus amigos ou membros de squad.
+
+## To Do
+
+- [x] Exibir uma listagem das armas e seus vários atributos.
+- [x] Alterar atributos da arma selecionada, ao equipar um acessório em Gunsmith.
 
 ## Getting Started
 
-First, run the development server:
+### Dev
 
 ```bash
+
+pnpm i
+
 pnpm dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+pnpm build
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologias
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- React
+- TypeScript
+- Next.js (App Router)
+- Tailwind
+- Shadcn
+- uuid
+- Geist
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### APIs
 
-## Deploy on Vercel
+- Battlebit API (oficial, porém em estado inicial; fornece apenas dados dos servidores atualmente ativos).
+- Steam Web API (para obter informações do jogo e notícias; implementação a considerar).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Aprendizado
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. URL Capitalization & SEO: https://www.searchenginejournal.com/url-capitalization-seo/343369/
+
+2. Tailwind não permite geração dinâmica de classes: https://stackoverflow.com/questions/72889068/template-literal-not-working-correctly-with-tailwind-css
+
+3. Uso de uma função como o valor inicial de um state: https://stackoverflow.com/questions/60120261/when-to-use-usestate-initial-value-as-function
