@@ -110,6 +110,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
   } = weapon
 
   // Toda vez que os attachments forem alterados, os valores da arma serão recalculados para exibir o novo valor em tela.
+  // Meu erro é aplicar os valores de todos os attachments toda vez que eu seleciono um novo; valores de attachment já aplicados não devem ser aplicados novamente.
   useEffect(() => {
     const updateWeaponStats = () => {
       const { optic, magazine, sideRail } = attachments
@@ -161,7 +162,7 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
         setAttachments((prevState) => ({
           ...prevState,
 
-          optic: {
+          [attachmentCategory]: {
             name: attachmentFromJSON.name,
             statModifier: attachmentFromJSON?.statModifier.map(
               (item: { stat: any; modifier: any }) => ({
