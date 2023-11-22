@@ -3,33 +3,37 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
+import { Gunsmith } from '.'
+import { GunsmithStats } from './GunsmithStats'
+
+import attachmentData from '../../json/attachments.json'
+import weaponData from '../../json/weapons.json'
+
 interface IGunsmith {
   weaponName: string
 }
 
-interface IOptic {
-  name: string
-  statModifier: []
-}
-
-interface ISideRail {
-  name: string
-  statModifier: []
-}
-
-interface IMagazine {
-  name: string
-  statModifier: []
-}
-
 interface IAttachments {
-  optic?: IOptic
+  optic?: {
+    name: string
+    statModifier: []
+  }
+
   topSight?: string
   cantedSight?: string
   barrel?: string
-  magazine?: IMagazine
+
+  magazine?: {
+    name: string
+    statModifier: []
+  }
+
   underbarrel?: string
-  sideRail?: ISideRail
+
+  sideRail?: {
+    name: string
+    statModifier: []
+  }
 }
 
 interface IWeaponInfo {
@@ -57,18 +61,13 @@ interface IWeaponInfo {
   runningSpeed: number
 }
 
-import attachmentData from '../../json/attachments.json'
-import weaponData from '../../json/weapons.json'
-
-import { Gunsmith } from '.'
-import { GunsmithStats } from './GunsmithStats'
-
 export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
   const gun = weaponData.weapons.find(
     (weaponDataItem) => weaponDataItem.pageName === weaponName
   )
 
   const [originalWeapon, setOriginalWeapon] = useState<IWeaponInfo>(gun!) // Este estado deve ser mantido como referência para os cálculos; sendo o valor original, não deve ser alterado.
+
   const [weapon, setWeapon] = useState<IWeaponInfo>(gun!) // Este é para exibir o valor alterado e atualizado em tela.
 
   const [attachments, setAttachments] = useState<IAttachments>({
@@ -112,51 +111,34 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
 
   // Toda vez que os attachments forem alterados, os valores da arma serão recalculados para exibir o novo valor em tela.
   useEffect(() => {
-    const applyModifiers = (originalValues: IWeaponInfo, modifiers: any[]) => {
-      if (modifiers !== undefined) {
-        return modifiers.reduce(
-          (
-            modifiedValues: { [x: string]: any },
-            modifier: { stat: any; modifier: any }
-          ) => {
-            const { stat, modifier: statModifier } = modifier
-
-            modifiedValues[stat] += statModifier
-            return modifiedValues
-          },
-          { ...originalValues }
-        )
-      } else {
-        return originalValues
-      }
-    }
-
     const updateWeaponStats = () => {
       const { optic, magazine, sideRail } = attachments
 
-      if (optic !== undefined && optic.name !== '-') {
-        const updatedWeapon = applyModifiers(originalWeapon, optic.statModifier)
+      const returnUpdatedWeapon = (attachmentType: IOptic | undefined) => {
+        if (attachmentType !== undefined && attachmentType.name !== '-') {
+          setWeapon((prevState) => {
+            const updatedWeapon = attachmentType.statModifier.reduce(
+              (accumulatedWeapon, modifier) => {
+                const { stat, modifier: statModifier } = modifier
 
-        setWeapon(updatedWeapon)
+                // Atualizar a propriedade correspondente da arma com o modificador
+                if (accumulatedWeapon[stat] !== undefined) {
+                  accumulatedWeapon[stat] += statModifier
+                }
+
+                return accumulatedWeapon
+              },
+              { ...prevState }
+            )
+
+            return updatedWeapon
+          })
+        }
       }
 
-      if (magazine !== undefined && magazine.name !== '-') {
-        const updatedWeapon = applyModifiers(
-          originalWeapon,
-          magazine.statModifier
-        )
-
-        setWeapon(updatedWeapon)
-      }
-
-      if (sideRail !== undefined && sideRail.name !== '-') {
-        const updatedWeapon = applyModifiers(
-          originalWeapon,
-          sideRail.statModifier
-        )
-
-        setWeapon(updatedWeapon)
-      }
+      returnUpdatedWeapon(optic)
+      returnUpdatedWeapon(magazine)
+      returnUpdatedWeapon(sideRail)
     }
 
     updateWeaponStats()
@@ -168,151 +150,76 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
     const attachmentSelected = e.target?.innerText
     const attachmentSlot = e.target?.closest('ul').dataset.slot
 
+    const applyAttachmentToSlot = (attachmentCategory: string) => {
+      const string = attachmentData.attachments[attachmentCategory] // bracket notation com 'attachmentCategory' é importante, pois ele é uma variável.
+
+      let attachmentFromJSON = string.find(
+        (attachmentsItem) => attachmentsItem.name === attachmentSelected
+      )
+
+      if (attachmentFromJSON?.statModifier !== 'none') {
+        setAttachments((prevState) => ({
+          ...prevState,
+
+          optic: {
+            name: attachmentFromJSON.name,
+            statModifier: attachmentFromJSON?.statModifier.map(
+              (item: { stat: any; modifier: any }) => ({
+                stat: item.stat,
+                modifier: item.modifier,
+              })
+            ),
+          },
+        }))
+      } else {
+        setAttachments((prevState) => ({
+          ...prevState,
+
+          // Usar computed property name é necessário, pois attachmentCategory é uma variável.
+          [attachmentCategory]: {
+            name: attachmentFromJSON.name,
+          },
+        }))
+      }
+    }
+
     switch (attachmentSlot) {
       case 'optic':
-        let opticAttachmentFromJSON = attachmentData.attachments.optic.find(
-          (attachmentsItem) => attachmentsItem.name === attachmentSelected
-        )
-
-        if (opticAttachmentFromJSON?.statModifier !== 'none') {
-          setAttachments((prevState) => ({
-            ...prevState,
-
-            optic: {
-              name: opticAttachmentFromJSON!.name,
-              statModifier: opticAttachmentFromJSON?.statModifier.map(
-                (item: { stat: any; modifier: any }) => ({
-                  stat: item.stat,
-                  modifier: item.modifier,
-                })
-              ),
-            },
-          }))
-        } else {
-          setAttachments((prevState) => ({
-            ...prevState,
-
-            optic: {
-              name: opticAttachmentFromJSON!.name,
-            },
-          }))
-        }
+        applyAttachmentToSlot('optic')
 
         break
 
       case 'topSight':
-        let topSightAttachmentFromJSON =
-          attachmentData.attachments.topSight.find(
-            (attachmentsItem) => attachmentsItem.name === attachmentSelected
-          )
-
-        setAttachments((prevState) => ({
-          ...prevState,
-          topSight: topSightAttachmentFromJSON!.name,
-        }))
+        applyAttachmentToSlot('topSight')
 
         break
 
       case 'cantedSight':
-        let cantedSightAttachmentFromJSON =
-          attachmentData.attachments.cantedSight.find(
-            (attachmentsItem) => attachmentsItem.name === attachmentSelected
-          )
-
-        setAttachments((prevState) => ({
-          ...prevState,
-          cantedSight: cantedSightAttachmentFromJSON!.name,
-        }))
+        applyAttachmentToSlot('cantedSight')
 
         break
 
       case 'barrel':
-        let barrelAttachmentFromJSON = attachmentData.attachments.barrel.find(
-          (attachmentsItem) => attachmentsItem.name === attachmentSelected
-        )
-
-        setAttachments((prevState) => ({
-          ...prevState,
-          barrel: barrelAttachmentFromJSON!.name,
-        }))
+        applyAttachmentToSlot('barrel')
 
         break
 
       case 'magazine':
-        let magazineAttachmentFromJSON =
-          attachmentData.attachments.magazine.find(
-            (attachmentsItem) => attachmentsItem.name === attachmentSelected
-          )
-
-        if (magazineAttachmentFromJSON?.statModifier !== 'none') {
-          setAttachments((prevState) => ({
-            ...prevState,
-
-            magazine: {
-              name: magazineAttachmentFromJSON!.name,
-              statModifier: magazineAttachmentFromJSON?.statModifier.map(
-                (item: { stat: any; modifier: any }) => ({
-                  stat: item.stat,
-                  modifier: item.modifier,
-                })
-              ),
-            },
-          }))
-        } else {
-          setAttachments((prevState) => ({
-            ...prevState,
-
-            magazine: {
-              name: magazineAttachmentFromJSON!.name,
-            },
-          }))
-        }
+        applyAttachmentToSlot('magazine')
 
         break
 
       case 'underbarrel':
-        let underbarrelAttachmentFromJSON =
-          attachmentData.attachments.underbarrel.find(
-            (attachmentsItem) => attachmentsItem.name === attachmentSelected
-          )
-
-        setAttachments((prevState) => ({
-          ...prevState,
-          underbarrel: underbarrelAttachmentFromJSON!.name,
-        }))
+        applyAttachmentToSlot('underbarrel')
 
         break
 
       case 'sideRail':
-        let sideRailAttachmentFromJSON =
-          attachmentData.attachments.sideRail.find(
-            (attachmentsItem) => attachmentsItem.name === attachmentSelected
-          )
+        applyAttachmentToSlot('sideRail')
 
-        if (sideRailAttachmentFromJSON?.statModifier !== 'none') {
-          setAttachments((prevState) => ({
-            ...prevState,
+        break
 
-            sideRail: {
-              name: sideRailAttachmentFromJSON!.name,
-              statModifier: sideRailAttachmentFromJSON?.statModifier.map(
-                (item: { stat: any; modifier: any }) => ({
-                  stat: item.stat,
-                  modifier: item.modifier,
-                })
-              ),
-            },
-          }))
-        } else {
-          setAttachments((prevState) => ({
-            ...prevState,
-
-            sideRail: {
-              name: sideRailAttachmentFromJSON!.name,
-            },
-          }))
-        }
-
+      default:
         break
     }
   }
