@@ -7,7 +7,16 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 ## To Do
 
 - [x] Exibir uma listagem das armas e seus vários atributos.
+
 - [x] Alterar atributos da arma selecionada, ao equipar um acessório em Gunsmith.
+
+Ao selecionar um attachment em uma categoria, os seus modificadores de atributos serão aplicados (positivos ou negativos).
+
+1. Afeta os valores exibidos em "Stats".
+
+2. Alguns attachments não possuem modificador.
+
+- [x] Permitir ordenação dos itens presentes na listagem de armas, a partir de um determinado stat.
 
 ## Getting Started
 
@@ -51,3 +60,9 @@ pnpm build
 2. Tailwind não permite geração dinâmica de classes: https://stackoverflow.com/questions/72889068/template-literal-not-working-correctly-with-tailwind-css
 
 3. Uso de uma função como o valor inicial de um state: https://stackoverflow.com/questions/60120261/when-to-use-usestate-initial-value-as-function
+
+4. Desativar verificação de erros na tipagem, durante o build do Next.js: https://nextjs.org/docs/app/api-reference/next-config-js/typescript
+
+5. Obter propriedades de um objeto dinamicamente: https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript
+
+6. Ordenar por propriedade: https://byby.dev/js-sort-by-object-property
