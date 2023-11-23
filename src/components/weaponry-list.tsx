@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -13,10 +15,105 @@ import {
 
 import { MotionWrapper } from './motion-wrapper'
 import { Button } from './ui/button'
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './ui/select'
+
+import { useState } from 'react'
 import { Separator } from './ui/separator'
 
+interface IWeaponInfo {
+  toSorted(
+    compareByCapacity: (a: IWeaponInfo, b: IWeaponInfo) => number
+  ): IWeaponInfo
+  id: number
+  pageName: string
+  name: string
+  icon: string
+  category: string
+  damage: number
+  lightArmorDamage: number
+  heavyArmorDamage: number
+  capacity: number
+  fireRate: number
+  reloadTime: number
+  drawSpeed: number
+  verticalRecoil: number
+  horizontalRecoil: number
+  firstShotKick: number
+  velocity: number
+  accuracy: number
+  soundSpread: number
+  muzzleFlashScale: number
+  control: number
+  aimDownTime: number
+  runningSpeed: number
+  boltActionSpeed?: number
+}
+
 export const WeaponryList = () => {
-  const weaponCards = data.weapons.map((weapon) => {
+  const [weapons, setWeapons] = useState(data.weapons)
+
+  const handleSelect = (value: string) => {
+    switch (value) {
+      case 'Alphabetical': {
+        const compareByName = (a: any, b: any) => {
+          return a.name.localeCompare(b.name)
+        }
+
+        setWeapons((prev) => prev.toSorted(compareByName))
+        break
+      }
+
+      case 'Damage': {
+        const compareByDamage = (a: any, b: any) => {
+          return b.damage - a.damage // ordem crescente
+          // return a.damage - b.damage // ordem decrescente
+        }
+
+        setWeapons((prev) => prev.toSorted(compareByDamage))
+        break
+      }
+
+      case 'Fire Rate': {
+        const compareByFireRate = (a: any, b: any) => {
+          return b.fireRate - a.fireRate
+        }
+
+        setWeapons((prev) => prev.toSorted(compareByFireRate))
+        break
+      }
+
+      case 'Capacity': {
+        const compareByCapacity = (a: any, b: any) => {
+          return b.capacity - a.capacity
+        }
+
+        setWeapons((prev) => prev.toSorted(compareByCapacity))
+        break
+      }
+
+      case 'Reload Time': {
+        const compareByReloadTime = (a: any, b: any) => {
+          return a.reloadTime - b.reloadTime
+        }
+
+        setWeapons((prev) => prev.toSorted(compareByReloadTime))
+        break
+      }
+
+      default: {
+        return
+      }
+    }
+  }
+
+  const weaponCards = weapons.map((weapon) => {
     const {
       id,
       pageName,
@@ -144,12 +241,6 @@ export const WeaponryList = () => {
             </p>
           </div>
         </CardContent>
-
-        {/* <CardFooter className="py-4 relative">
-          <Separator className="absolute right-0 top-0 left-0 bg-white" />
-
-          <p>Card Footer</p>
-        </CardFooter> */}
       </Card>
     )
   })
@@ -162,21 +253,21 @@ export const WeaponryList = () => {
       exit={{ y: '-25%', opacity: 0 }}
       style={{ width: '100%', margin: '0 auto' }}
     >
-      {/* <div className="w-full max-w-[100rem] mx-auto mb-4 flex justify-end">
-        <Select>
-          <SelectTrigger className="w-[200px] rounded-sm">
+      <div className="w-full max-w-[100rem] mx-auto mb-4 flex justify-end">
+        <Select onValueChange={(e) => handleSelect(e)}>
+          <SelectTrigger className="w-[200px] rounded-xl border-white">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
 
           <SelectContent>
             <SelectItem value="Alphabetical">Alphabetical</SelectItem>
             <SelectItem value="Damage">Damage</SelectItem>
-            <SelectItem value="Fire rate">Fire rate</SelectItem>
+            <SelectItem value="Fire Rate">Fire Rate</SelectItem>
             <SelectItem value="Capacity">Capacity</SelectItem>
-            <SelectItem value="Reload speed">Reload speed</SelectItem>
+            <SelectItem value="Reload Time">Reload Time</SelectItem>
           </SelectContent>
         </Select>
-      </div> */}
+      </div>
 
       <div className="w-full max-w-[100rem] mx-auto flex gap-4 flex-wrap">
         {weaponCards}
