@@ -27,10 +27,7 @@ import {
 import { useState } from 'react'
 import { Separator } from './ui/separator'
 
-interface IWeaponInfo {
-  toSorted(
-    compareByCapacity: (a: IWeaponInfo, b: IWeaponInfo) => number
-  ): IWeaponInfo
+interface WeaponInfo {
   id: number
   pageName: string
   name: string

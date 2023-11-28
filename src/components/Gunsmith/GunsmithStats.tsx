@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-interface IStats {
+interface Stats {
   stats: {
     damage: number
     lightArmorDamage: number
@@ -22,7 +22,7 @@ interface IStats {
   }
 }
 
-export const GunsmithStats = ({ stats }: IStats) => {
+export const GunsmithStats = ({ stats }: Stats) => {
   const getKeyValuePairsFromStats = Object.entries(stats)
 
   return (

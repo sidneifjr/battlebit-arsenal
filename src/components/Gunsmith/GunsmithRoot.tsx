@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-interface IGunsmithRoot {
+interface GunsmithRoot {
   children: ReactNode
 }
 
-export const GunsmithRoot = ({ children }: IGunsmithRoot) => {
+export const GunsmithRoot = ({ children }: GunsmithRoot) => {
   return (
     <section className="min-h-screen max-w-full p-4 flex flex-col flex-1">
       {children}

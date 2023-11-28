@@ -1,11 +1,11 @@
 import { useRouter } from 'next/navigation'
 import { Button } from '../ui/button'
 
-interface IGunsmithTitle {
+interface GunsmithTitle {
   weaponName: string
 }
 
-export const GunsmithTitle = ({ weaponName }: IGunsmithTitle) => {
+export const GunsmithTitle = ({ weaponName }: GunsmithTitle) => {
   const router = useRouter()
 
   return (
