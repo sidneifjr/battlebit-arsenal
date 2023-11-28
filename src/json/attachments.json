@@ -1,443 +1,580 @@
 {
-  "attachments": {
-    "optic": [
-      {
-        "id": "optic-1",
-        "name": "Red Dot",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-2",
-        "name": "Reflex",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-3",
-        "name": "Holographic",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-4",
-        "name": "Kobra",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-5",
-        "name": "Razor",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-6",
-        "name": "F You",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-7",
-        "name": "Holo PK120",
-        "statModifier": "none"
-      },
-      {
-        "id": "optic-8",
-        "name": "Aim Comp",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          }
-        ]
-      },
-      {
-        "id": "optic-9",
-        "name": "Strikefire",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          }
-        ]
-      },
-      {
-        "id": "optic-10",
-        "name": "HS 401G5",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          }
-        ]
-      },
-      {
-        "id": "optic-11",
-        "name": "Flir",
-        "statModifier": [
-          {
-            "stat": "firstShotKick",
-            "modifier": 0.3
-          },
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.2
-          },
-          {
-            "stat": "control",
-            "modifier": -0.07
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.2
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.04
-          }
-        ]
-      },
-      {
-        "id": "optic-12",
-        "name": "ACOG",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.01
-          }
-        ]
-      },
-      {
-        "id": "optic-13",
-        "name": "M125",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "optic-14",
-        "name": "Prisma",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "optic-15",
-        "name": "Slip",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "optic-16",
-        "name": "Echo",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.01
-          }
-        ]
-      },
-      {
-        "id": "optic-17",
-        "name": "TRI4 x32",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.01
-          }
-        ]
-      },
-      {
-        "id": "optic-18",
-        "name": "Burris A R332",
-        "statModifier": [
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.04
-          },
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": -0.01
-          }
-        ]
-      }
-    ],
-    "topSight": [
-      {
-        "id": "topSight-1",
-        "name": "Red Dot Sight"
-      },
-      {
-        "id": "optic-2",
-        "name": "Holo Sight"
-      }
-    ],
-    "cantedSight": [
-      {
-        "id": "cantedSight-1",
-        "name": "Ironsight"
-      },
-      {
-        "id": "cantedSight-2",
-        "name": "Canted Red Dot Sight"
-      },
-      {
-        "id": "cantedSight-3",
-        "name": "Holo Dot Sight"
-      },
-      {
-        "id": "cantedSight-4",
-        "name": "Canted F U Sight"
-      }
-    ],
-    "barrel": [
-      {
-        "id": "barrel-1",
-        "name": "Compensator"
-      },
-      {
-        "id": "barrel-2",
-        "name": "Flash Hider"
-      }
-    ],
-    "underbarrel": [
-      {
-        "id": "underbarrel-1",
-        "name": "Vertical Grip"
-      },
-      {
-        "id": "underbarrel-2",
-        "name": "S E-5 Grip"
-      },
-      {
-        "id": "underbarrel-3",
-        "name": "B-25 URK"
-      }
-    ],
-    "sideRail": [
-      {
-        "id": "sideRail-1",
-        "name": "Flashlight",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "sideRail-2",
-        "name": "Tactical Flashlight",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "sideRail-3",
-        "name": "Redlaser",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "sideRail-4",
-        "name": "Greenlaser",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "sideRail-5",
-        "name": "Rangefinder",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      },
-      {
-        "id": "sideRail-6",
-        "name": "Searchlight",
-        "statModifier": [
-          {
-            "stat": "control",
-            "modifier": -0.012
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.05
-          }
-        ]
-      }
-    ],
-    "magazine": [
-      {
-        "id": "magazine-1",
-        "name": "Quick-A (30)",
-        "statModifier": [
-          {
-            "stat": "verticalRecoil",
-            "modifier": 0.02
-          },
-          {
-            "stat": "horizontalRecoil",
-            "modifier": 0.067
-          },
-          {
-            "stat": "reloadTime",
-            "modifier": -0.206
-          }
-        ]
-      },
-      {
-        "id": "magazine-2",
-        "name": "Extended-A (45)",
-        "statModifier": [
-          {
-            "stat": "verticalRecoil",
-            "modifier": 0.12
-          },
-          {
-            "stat": "horizontalRecoil",
-            "modifier": 0.283
-          },
-          {
-            "stat": "control",
-            "modifier": 0.116
-          },
-          {
-            "stat": "aimDownTime",
-            "modifier": 0.25
-          },
-          {
-            "stat": "movementSpeed",
-            "modifier": 0.24
-          },
-          {
-            "stat": "reloadTime",
-            "modifier": 0.317
-          },
-          {
-            "stat": "drawSpeed",
-            "modifier": -0.25
-          }
-        ]
-      }
-    ]
-  }
+  "attachments": [
+    {
+      "id": "optic-1",
+      "name": "Red Dot",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-2",
+      "name": "Reflex",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-3",
+      "name": "Holographic",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-4",
+      "name": "Kobra",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-5",
+      "name": "Razor",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-6",
+      "name": "F You",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-7",
+      "name": "Holo PK120",
+      "category": "optic",
+      "statModifier": "none"
+    },
+    {
+      "id": "optic-8",
+      "name": "Aim Comp",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        }
+      ]
+    },
+    {
+      "id": "optic-9",
+      "name": "Strikefire",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        }
+      ]
+    },
+    {
+      "id": "optic-10",
+      "name": "HS 401G5",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        }
+      ]
+    },
+    {
+      "id": "optic-11",
+      "name": "Flir",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "firstShotKick",
+          "modifier": 0.3
+        },
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.2
+        },
+        {
+          "stat": "control",
+          "modifier": -0.07
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.2
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.04
+        }
+      ]
+    },
+    {
+      "id": "optic-12",
+      "name": "ACOG",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.01
+        }
+      ]
+    },
+    {
+      "id": "optic-13",
+      "name": "M125",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "optic-14",
+      "name": "Prisma",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "optic-15",
+      "name": "Slip",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "optic-16",
+      "name": "Echo",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.01
+        }
+      ]
+    },
+    {
+      "id": "optic-17",
+      "name": "TRI4 x32",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.01
+        }
+      ]
+    },
+    {
+      "id": "optic-18",
+      "name": "Burris A R332",
+      "category": "optic",
+      "statModifier": [
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.04
+        },
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": -0.01
+        }
+      ]
+    },
+    {
+      "id": "topSight-1",
+      "category": "topSight",
+      "name": "Red Dot Sight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "topSight-2",
+      "category": "topSight",
+      "name": "Holo Sight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "cantedSight-1",
+      "category": "cantedSight",
+      "name": "Ironsight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "cantedSight-2",
+      "category": "cantedSight",
+      "name": "Canted Red Dot Sight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "cantedSight-3",
+      "category": "cantedSight",
+      "name": "Holo Dot Sight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "cantedSight-4",
+      "category": "cantedSight",
+      "name": "Canted F U Sight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.02
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "barrel-1",
+      "category": "barrel",
+      "name": "Compensator",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": -0.02
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": -0.02
+        }
+      ]
+    },
+    {
+      "id": "barrel-2",
+      "category": "barrel",
+      "name": "Flash Hider",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": 0.2
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": 0.02
+        }
+      ]
+    },
+    {
+      "id": "underbarrel-1",
+      "category": "underbarrel",
+      "name": "Vertical Grip",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": -0.2
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": 0.15
+        }
+      ]
+    },
+    {
+      "id": "underbarrel-2",
+      "category": "underbarrel",
+      "name": "S E-5 Grip",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": -0.1
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": -0.1
+        }
+      ]
+    },
+    {
+      "id": "underbarrel-3",
+      "category": "underbarrel",
+      "name": "B-25 URK",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": -0.1
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": -0.05
+        },
+        {
+          "stat": "reloadTime",
+          "modifier": -0.3
+        }
+      ]
+    },
+    {
+      "id": "sideRail-1",
+      "category": "sideRail",
+      "name": "Flashlight",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "sideRail-2",
+      "name": "Tactical Flashlight",
+      "category": "sideRail",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "sideRail-3",
+      "name": "Redlaser",
+      "category": "sideRail",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "sideRail-4",
+      "name": "Greenlaser",
+      "category": "sideRail",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "sideRail-5",
+      "name": "Rangefinder",
+      "category": "sideRail",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "sideRail-6",
+      "name": "Searchlight",
+      "category": "sideRail",
+      "statModifier": [
+        {
+          "stat": "control",
+          "modifier": -0.012
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.05
+        }
+      ]
+    },
+    {
+      "id": "magazine-1",
+      "category": "magazine",
+      "name": "Quick-A (30)",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": 0.02
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": 0.067
+        },
+        {
+          "stat": "reloadTime",
+          "modifier": -0.206
+        }
+      ]
+    },
+    {
+      "id": "magazine-2",
+      "category": "magazine",
+      "name": "Extended-A (45)",
+      "statModifier": [
+        {
+          "stat": "verticalRecoil",
+          "modifier": 0.12
+        },
+        {
+          "stat": "horizontalRecoil",
+          "modifier": 0.283
+        },
+        {
+          "stat": "control",
+          "modifier": 0.116
+        },
+        {
+          "stat": "aimDownTime",
+          "modifier": 0.25
+        },
+        {
+          "stat": "movementSpeed",
+          "modifier": 0.24
+        },
+        {
+          "stat": "reloadTime",
+          "modifier": 0.317
+        },
+        {
+          "stat": "drawSpeed",
+          "modifier": -0.25
+        }
+      ]
+    }
+  ]
 }
