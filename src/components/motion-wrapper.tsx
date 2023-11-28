@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 import { motion } from 'framer-motion'
 
-interface IMotionWrapper {
+interface MotionWrapper {
   children: ReactNode
   initial: any
   animate: any
@@ -20,7 +20,7 @@ export const MotionWrapper = ({
   transition,
   exit,
   style,
-}: IMotionWrapper) => {
+}: MotionWrapper) => {
   return (
     <motion.div
       initial={initial}

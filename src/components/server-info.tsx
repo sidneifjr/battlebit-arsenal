@@ -15,11 +15,11 @@ interface DataProps {
   Build: string
 }
 
-interface IData {
+interface Data {
   data: DataProps[]
 }
 
-export const ServerInfo = (data: IData) => {
+export const ServerInfo = (data: Data) => {
   const getTotalPlayerCount = () => {
     if (data.data === undefined) {
       return 0
