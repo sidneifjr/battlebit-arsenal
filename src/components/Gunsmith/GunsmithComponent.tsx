@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Gunsmith } from '.'
 import { GunsmithStats } from './GunsmithStats'
@@ -9,34 +9,26 @@ import { GunsmithStats } from './GunsmithStats'
 import attachmentData from '../../json/attachments.json'
 import weaponData from '../../json/weapons.json'
 
-interface IGunsmith {
+interface GunsmithProps {
   weaponName: string
 }
 
-interface IAttachments {
-  optic?: {
-    name: string
-    statModifier: []
-  }
-
-  topSight?: string
-  cantedSight?: string
-  barrel?: string
-
-  magazine?: {
-    name: string
-    statModifier: []
-  }
-
-  underbarrel?: string
-
-  sideRail?: {
-    name: string
-    statModifier: []
-  }
+interface AttachmentsItem {
+  name: string
+  statModifier: []
 }
 
-interface IWeaponInfo {
+interface Attachments {
+  optic?: AttachmentsItem
+  topSight?: AttachmentsItem
+  cantedSight?: AttachmentsItem
+  barrel?: AttachmentsItem
+  magazine?: AttachmentsItem
+  underbarrel?: AttachmentsItem
+  sideRail?: AttachmentsItem
+}
+
+interface WeaponInfo {
   id: number
   pageName: string
   name: string
@@ -61,28 +53,39 @@ interface IWeaponInfo {
   runningSpeed: number
 }
 
-export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
-  const gun = weaponData.weapons.find(
+export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
+  // Não deve ser alterado, pois é necessário para resetar os valores iniciais após as modificações nos stats provenientes dos attachments.
+  const originalWeapon = weaponData.weapons.find(
     (weaponDataItem) => weaponDataItem.pageName === weaponName
-  )
+  ) as WeaponInfo
 
-  const [originalWeapon, setOriginalWeapon] = useState<IWeaponInfo>(gun!) // Este estado deve ser mantido como referência para os cálculos; sendo o valor original, não deve ser alterado.
+  const [weapon, setWeapon] = useState(originalWeapon)
 
-  const [weapon, setWeapon] = useState<IWeaponInfo>(gun!) // Este é para exibir o valor alterado e atualizado em tela.
-
-  const [attachments, setAttachments] = useState<IAttachments>({
+  const [attachments, setAttachments] = useState<Attachments>({
     optic: {
       name: '-',
       statModifier: [],
     },
-    topSight: '-',
-    cantedSight: '-',
-    barrel: '-',
+    topSight: {
+      name: '-',
+      statModifier: [],
+    },
+    cantedSight: {
+      name: '-',
+      statModifier: [],
+    },
+    barrel: {
+      name: '-',
+      statModifier: [],
+    },
     magazine: {
       name: '-',
       statModifier: [],
     },
-    underbarrel: '-',
+    underbarrel: {
+      name: '-',
+      statModifier: [],
+    },
     sideRail: {
       name: '-',
       statModifier: [],
@@ -109,120 +112,21 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
     drawSpeed,
   } = weapon
 
-  // Toda vez que os attachments forem alterados, os valores da arma serão recalculados para exibir o novo valor em tela.
-  // Meu erro é aplicar os valores de todos os attachments toda vez que eu seleciono um novo; valores de attachment já aplicados não devem ser aplicados novamente.
-  useEffect(() => {
-    const updateWeaponStats = () => {
-      const { optic, magazine, sideRail } = attachments
-
-      const returnUpdatedWeapon = (attachmentType: IOptic | undefined) => {
-        if (attachmentType !== undefined && attachmentType.name !== '-') {
-          setWeapon((prevState) => {
-            const updatedWeapon = attachmentType.statModifier.reduce(
-              (accumulatedWeapon, modifier) => {
-                const { stat, modifier: statModifier } = modifier
-
-                // Atualizar a propriedade correspondente da arma com o modificador
-                if (accumulatedWeapon[stat] !== undefined) {
-                  accumulatedWeapon[stat] += statModifier
-                }
-
-                return accumulatedWeapon
-              },
-              { ...prevState }
-            )
-
-            return updatedWeapon
-          })
-        }
-      }
-
-      returnUpdatedWeapon(optic)
-      returnUpdatedWeapon(magazine)
-      returnUpdatedWeapon(sideRail)
-    }
-
-    updateWeaponStats()
-  }, [attachments, originalWeapon])
+  const getAttachmentsFromCategory = (category: string) => {
+    return attachmentData.attachments.filter(
+      (item) => item.category === category
+    )
+  }
 
   const handleAttachments = (e: any) => {
-    e.preventDefault()
+    const myAttachment = attachmentData.attachments.find(
+      (item) => item.name === e
+    )
 
-    const attachmentSelected = e.target?.innerText
-    const attachmentSlot = e.target?.closest('ul').dataset.slot
-
-    const applyAttachmentToSlot = (attachmentCategory: string) => {
-      const string = attachmentData.attachments[attachmentCategory] // bracket notation com 'attachmentCategory' é importante, pois ele é uma variável.
-
-      let attachmentFromJSON = string.find(
-        (attachmentsItem) => attachmentsItem.name === attachmentSelected
-      )
-
-      if (attachmentFromJSON?.statModifier !== 'none') {
-        setAttachments((prevState) => ({
-          ...prevState,
-
-          [attachmentCategory]: {
-            name: attachmentFromJSON.name,
-            statModifier: attachmentFromJSON?.statModifier.map(
-              (item: { stat: any; modifier: any }) => ({
-                stat: item.stat,
-                modifier: item.modifier,
-              })
-            ),
-          },
-        }))
-      } else {
-        setAttachments((prevState) => ({
-          ...prevState,
-
-          // Usar computed property name é necessário, pois attachmentCategory é uma variável.
-          [attachmentCategory]: {
-            name: attachmentFromJSON.name,
-          },
-        }))
-      }
-    }
-
-    switch (attachmentSlot) {
-      case 'optic':
-        applyAttachmentToSlot('optic')
-
-        break
-
-      case 'topSight':
-        applyAttachmentToSlot('topSight')
-
-        break
-
-      case 'cantedSight':
-        applyAttachmentToSlot('cantedSight')
-
-        break
-
-      case 'barrel':
-        applyAttachmentToSlot('barrel')
-
-        break
-
-      case 'magazine':
-        applyAttachmentToSlot('magazine')
-
-        break
-
-      case 'underbarrel':
-        applyAttachmentToSlot('underbarrel')
-
-        break
-
-      case 'sideRail':
-        applyAttachmentToSlot('sideRail')
-
-        break
-
-      default:
-        break
-    }
+    setAttachments((prev) => ({
+      ...prev,
+      [myAttachment!.category]: myAttachment,
+    }))
   }
 
   return (
@@ -258,28 +162,28 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
               slotType="optic"
               selectedAttachment={() => attachments.optic!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.optic}
+              attachmentOptions={getAttachmentsFromCategory('optic')}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="topSight"
-              selectedAttachment={() => attachments.topSight!}
+              selectedAttachment={() => attachments.topSight!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.topSight}
+              attachmentOptions={getAttachmentsFromCategory('topSight')}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="cantedSight"
-              selectedAttachment={() => attachments.cantedSight!}
+              selectedAttachment={() => attachments.cantedSight!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.cantedSight}
+              attachmentOptions={getAttachmentsFromCategory('cantedSight')}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="barrel"
-              selectedAttachment={() => attachments.barrel!}
+              selectedAttachment={() => attachments.barrel!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.barrel}
+              attachmentOptions={getAttachmentsFromCategory('barrel')}
             />
           </div>
 
@@ -297,21 +201,21 @@ export const GunsmithComponent = ({ weaponName }: IGunsmith) => {
               slotType="magazine"
               selectedAttachment={() => attachments.magazine!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.magazine}
+              attachmentOptions={getAttachmentsFromCategory('magazine')}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="underbarrel"
-              selectedAttachment={() => attachments.underbarrel!}
+              selectedAttachment={() => attachments.underbarrel!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.underbarrel}
+              attachmentOptions={getAttachmentsFromCategory('underbarrel')}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="sideRail"
               selectedAttachment={() => attachments.sideRail!.name}
               onClick={(e: any) => handleAttachments(e)}
-              attachmentOptions={attachmentData.attachments.sideRail}
+              attachmentOptions={getAttachmentsFromCategory('sideRail')}
             />
           </div>
         </Gunsmith.AttachmentContainer>
