@@ -127,6 +127,22 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
       ...prev,
       [myAttachment!.category]: myAttachment,
     }))
+
+    setWeapon((prev) => {
+      const updatedWeapon = { ...prev }
+
+      const attachmentStatModifiers = myAttachment?.statModifier
+
+      if (attachmentStatModifiers !== 'none') {
+        attachmentStatModifiers?.forEach(
+          (statModifierItem: { stat: string | number; modifier: any }) => {
+            updatedWeapon[statModifierItem.stat] += statModifierItem.modifier
+          }
+        )
+      }
+
+      return updatedWeapon
+    })
   }
 
   return (
