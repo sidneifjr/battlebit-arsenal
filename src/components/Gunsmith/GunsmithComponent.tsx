@@ -51,6 +51,7 @@ interface WeaponInfo {
   control: number
   aimDownTime: number
   runningSpeed: number
+  rangeData: number[]
 }
 
 export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
@@ -135,8 +136,11 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
 
       if (attachmentStatModifiers !== 'none') {
         attachmentStatModifiers?.forEach(
-          (statModifierItem: { stat: string | number; modifier: any }) => {
-            updatedWeapon[statModifierItem.stat] += statModifierItem.modifier
+          (item: { stat: string; modifier: number }) => {
+            const attachmentStat = item.stat
+            const attachmentModifier = item.modifier
+
+            updatedWeapon[attachmentStat] += attachmentModifier // soma o valor atual de uma estatística específica, com um dos modificadores provenientes do acessório selecionado.
           }
         )
       }
@@ -236,6 +240,8 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
           </div>
         </Gunsmith.AttachmentContainer>
       </div>
+
+      {weapon.rangeData && <Gunsmith.RangeGraph rangeData={weapon.rangeData} />}
     </Gunsmith.Root>
   )
 }

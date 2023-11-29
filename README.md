@@ -18,11 +18,11 @@ Ao selecionar um attachment em uma categoria, os seus modificadores de atributos
 
 - [x] Permitir ordenação dos itens presentes na listagem de armas, a partir de um determinado stat.
 
+- [x] Elaborar um gráfico demonstrando a distância efetiva das armas, usando Highcharts, ChartJS ou semelhante.
+
 - [ ] Ao alterar o acessório no Gunsmith, comparar o valor novo (modificado pelo attachment) com o valor original e exibir o modificado em verde (caso melhore) ou vermelho (caso piore).
 
 - [ ] Implementar cálculo do "Time To Kill" (TTK), comparando o dano da arma com o HP de cada classe e tipo de armadura.
-
-- [ ] Elaborar um gráfico demonstrando a distância efetiva das armas, usando Highcharts ou semelhante.
 
 - [ ] Aplicar efeito sutil de partículas em Gunsmith, semelhante ao de Polygon.
 

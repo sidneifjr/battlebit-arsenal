@@ -24,7 +24,10 @@
       "firingMode": ["Semi-Auto", "Burst", "Full-Auto"],
       "fireRate": 700,
       "reloadTime": 4.17,
-      "drawSpeed": 1
+      "drawSpeed": 1,
+      "rangeData": [
+        30, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5
+      ]
     },
     {
       "id": 2,
