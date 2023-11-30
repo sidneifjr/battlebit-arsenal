@@ -11,7 +11,7 @@ export const GunsmithRangeGraph = (props: { rangeData: number[] }) => {
       '300m',
       '400m',
       '500m',
-      '6m',
+      '600m',
       '700m',
       '800m',
       '900m',
