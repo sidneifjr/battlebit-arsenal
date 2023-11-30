@@ -27,7 +27,7 @@ export const GunsmithRangeGraph = (props: { rangeData: number[] }) => {
   }
 
   return (
-    <div className="w-full h-96">
+    <div className="w-full pt-16">
       <Line
         datasetIdKey="id"
         data={{

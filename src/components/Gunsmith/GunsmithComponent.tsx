@@ -134,9 +134,7 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
     <Gunsmith.Root>
       <Gunsmith.Title weaponName={weapon.name} />
 
-      <div className="flex">
-        <Gunsmith.Stats stats={weapon} />
-
+      <div className="max-w-7xl mx-auto flex flex-col justify-center items-center">
         <Gunsmith.AttachmentContainer>
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
@@ -193,9 +191,13 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
             />
           </div>
         </Gunsmith.AttachmentContainer>
-      </div>
 
-      {weapon.rangeData && <Gunsmith.RangeGraph rangeData={weapon.rangeData} />}
+        <Gunsmith.Stats stats={weapon} />
+
+        {weapon.rangeData && (
+          <Gunsmith.RangeGraph rangeData={weapon.rangeData} />
+        )}
+      </div>
     </Gunsmith.Root>
   )
 }
