@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import { Gunsmith } from '.'
-import { GunsmithStats } from './GunsmithStats'
 
 import attachmentData from '../../json/attachments.json'
 import weaponData from '../../json/weapons.json'
@@ -136,7 +135,7 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
       <Gunsmith.Title weaponName={weapon.name} />
 
       <div className="flex">
-        <GunsmithStats stats={weapon} />
+        <Gunsmith.Stats stats={weapon} />
 
         <Gunsmith.AttachmentContainer>
           <div className="flex gap-16">
