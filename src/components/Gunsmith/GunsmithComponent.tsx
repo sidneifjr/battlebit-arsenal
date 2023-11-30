@@ -141,30 +141,26 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
               slotType="optic"
-              selectedAttachment={() => attachments.optic!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('optic')}
+              onClick={(e: any) => handleAttachments(e)}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="topSight"
-              selectedAttachment={() => attachments.topSight!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('topSight')}
+              onClick={(e: any) => handleAttachments(e)}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="cantedSight"
-              selectedAttachment={() => attachments.cantedSight!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('cantedSight')}
+              onClick={(e: any) => handleAttachments(e)}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="barrel"
-              selectedAttachment={() => attachments.barrel!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('barrel')}
+              onClick={(e: any) => handleAttachments(e)}
             />
           </div>
 
@@ -180,23 +176,20 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
               slotType="magazine"
-              selectedAttachment={() => attachments.magazine!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('magazine')}
+              onClick={(e: any) => handleAttachments(e)}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="underbarrel"
-              selectedAttachment={() => attachments.underbarrel!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('underbarrel')}
+              onClick={(e: any) => handleAttachments(e)}
             />
 
             <Gunsmith.AttachmentSlot
               slotType="sideRail"
-              selectedAttachment={() => attachments.sideRail!.name}
-              onClick={(e: any) => handleAttachments(e)}
               attachmentOptions={getAttachmentsFromCategory('sideRail')}
+              onClick={(e: any) => handleAttachments(e)}
             />
           </div>
         </Gunsmith.AttachmentContainer>
