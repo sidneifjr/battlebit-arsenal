@@ -46,7 +46,7 @@ interface WeaponInfo {
   muzzleFlashScale: number
   control: number
   aimDownTime: number
-  runningSpeed: number
+  movementSpeed: number
   capacity: number
   firingMode: string[]
   fireRate: number

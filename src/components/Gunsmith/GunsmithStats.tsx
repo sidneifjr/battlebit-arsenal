@@ -26,7 +26,7 @@ interface Stats {
     muzzleFlashScale: number
     control: number
     aimDownTime: number
-    runningSpeed: number
+    movementSpeed: number
   }
 }
 

@@ -52,7 +52,7 @@ interface WeaponInfo {
   muzzleFlashScale: number
   control: number
   aimDownTime: number
-  runningSpeed: number
+  movementSpeed: number
 }
 
 export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
