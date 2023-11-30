@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
+import { useEffect, useRef } from 'react'
 
 interface Stats {
   stats: {
@@ -31,6 +31,8 @@ interface Stats {
 }
 
 export const GunsmithStats = ({ stats }: Stats) => {
+  const ref = useRef(null)
+
   // Removendo stats que não serão úteis.
   const {
     id,
@@ -46,35 +48,42 @@ export const GunsmithStats = ({ stats }: Stats) => {
 
   const getKeyValuePairsFromStats = Object.entries(statsWithoutUndesirables)
 
+  /**
+    Quando houver alteração no valor de um stat, aplicar uma alteração na cor ou um "risco" no valor antigo.
+
+    1) Eu poderia comparar o valor inicial com o novo valor da propriedade específica.
+    2) Então, buscar pelo stat correspondente a partir do "ref" na ul.
+  */
+  useEffect(() => {
+    console.log(stats)
+  }, [stats])
+
   return (
-    <div className="max-w-xs pt-16">
+    <div className="w-full pt-16">
       <strong className="pb-2 block">Stats</strong>
 
       {/**
-       * Animar as barras de stats, ao entrar na página ou entrar no viewport do usuário.
+       * Animar as barras de stats, ao entrar na página ou no viewport do usuário.
        */}
-      <ul>
-        {getKeyValuePairsFromStats.map(([key, value]) =>
-          key !== 'rangeData' ? (
-            <li key={uuidv4()} className="pb-2">
-              <span className="pb-1 capitalize block">
-                {key}: {value.toFixed(2)}
-              </span>
+      <ul ref={ref}>
+        {getKeyValuePairsFromStats.map(
+          ([key, value]) =>
+            key !== 'rangeData' && (
+              <li key={key} className="pb-2">
+                <p className="pb-1 capitalize block">
+                  <span>{key}</span>: <span>{value.toFixed(2)}</span>
+                </p>
 
-              {/**
-               * Definir max e min value, semelhante a um input de range.
-               */}
-
-              <div className="h-0.5 max-w-[100%] bg-gray-500 rounded-xl">
-                <div
-                  className="bg-white h-full"
-                  style={{ width: `${value < 100 ? value : value / 12}%` }}
-                ></div>
-              </div>
-            </li>
-          ) : (
-            ''
-          )
+                <div className="h-0.5 max-w-[100%] bg-gray-500 rounded-xl">
+                  <div
+                    className="bg-white h-full"
+                    style={{
+                      width: `${value < 100 ? value : value / 12}%`,
+                    }}
+                  ></div>
+                </div>
+              </li>
+            )
         )}
       </ul>
     </div>
