@@ -30,10 +30,13 @@ interface Attachments {
 
 interface WeaponInfo {
   id: number
-  pageName: string
   name: string
-  icon: string
+  pageName: string
   category: string
+  icon: string
+  image: string
+  rangeData: number[]
+  firingMode: string[]
   damage: number
   lightArmorDamage: number
   heavyArmorDamage: number
@@ -51,7 +54,6 @@ interface WeaponInfo {
   control: number
   aimDownTime: number
   runningSpeed: number
-  rangeData: number[]
 }
 
 export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
@@ -92,26 +94,6 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
       statModifier: [],
     },
   })
-
-  const {
-    damage,
-    lightArmorDamage,
-    heavyArmorDamage,
-    fireRate,
-    reloadTime,
-    verticalRecoil,
-    horizontalRecoil,
-    firstShotKick,
-    velocity,
-    accuracy,
-    soundSpread,
-    muzzleFlashScale,
-    control,
-    aimDownTime,
-    runningSpeed,
-    capacity,
-    drawSpeed,
-  } = weapon
 
   const getAttachmentsFromCategory = (category: string) => {
     return attachmentData.attachments.filter(
@@ -154,27 +136,7 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
       <Gunsmith.Title weaponName={weapon.name} />
 
       <div className="flex">
-        <GunsmithStats
-          stats={{
-            damage,
-            lightArmorDamage,
-            heavyArmorDamage,
-            fireRate,
-            reloadTime,
-            verticalRecoil,
-            horizontalRecoil,
-            firstShotKick,
-            velocity,
-            accuracy,
-            soundSpread,
-            muzzleFlashScale,
-            control,
-            aimDownTime,
-            runningSpeed,
-            capacity,
-            drawSpeed,
-          }}
-        />
+        <GunsmithStats stats={weapon} />
 
         <Gunsmith.AttachmentContainer>
           <div className="flex gap-16">
