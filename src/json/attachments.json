@@ -3,48 +3,56 @@
     {
       "id": "optic-1",
       "name": "Red Dot",
+      "urlName": "red-dot",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-2",
       "name": "Reflex",
+      "urlName": "reflex",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-3",
       "name": "Holographic",
+      "urlName": "holographic",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-4",
       "name": "Kobra",
+      "urlName": "kobra",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-5",
       "name": "Razor",
+      "urlName": "razor",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-6",
       "name": "F You",
+      "urlName": "f-you",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-7",
       "name": "Holo PK120",
+      "urlName": "holo-pk120",
       "category": "optic",
       "statModifier": "none"
     },
     {
       "id": "optic-8",
       "name": "Aim Comp",
+      "urlName": "aim-comp",
       "category": "optic",
       "statModifier": [
         {
@@ -56,6 +64,7 @@
     {
       "id": "optic-9",
       "name": "Strikefire",
+      "urlName": "strikefire",
       "category": "optic",
       "statModifier": [
         {
@@ -67,6 +76,7 @@
     {
       "id": "optic-10",
       "name": "HS 401G5",
+      "urlName": "hs-401g5",
       "category": "optic",
       "statModifier": [
         {
@@ -78,6 +88,7 @@
     {
       "id": "optic-11",
       "name": "Flir",
+      "urlName": "flir",
       "category": "optic",
       "statModifier": [
         {
@@ -105,6 +116,7 @@
     {
       "id": "optic-12",
       "name": "ACOG",
+      "urlName": "acog",
       "category": "optic",
       "statModifier": [
         {
@@ -128,6 +140,7 @@
     {
       "id": "optic-13",
       "name": "M125",
+      "urlName": "m125",
       "category": "optic",
       "statModifier": [
         {
@@ -151,6 +164,7 @@
     {
       "id": "optic-14",
       "name": "Prisma",
+      "urlName": "prisma",
       "category": "optic",
       "statModifier": [
         {
@@ -174,6 +188,7 @@
     {
       "id": "optic-15",
       "name": "Slip",
+      "urlName": "slip",
       "category": "optic",
       "statModifier": [
         {
@@ -197,6 +212,7 @@
     {
       "id": "optic-16",
       "name": "Echo",
+      "urlName": "echo",
       "category": "optic",
       "statModifier": [
         {
@@ -220,6 +236,7 @@
     {
       "id": "optic-17",
       "name": "TRI4 x32",
+      "urlName": "tri4-x32",
       "category": "optic",
       "statModifier": [
         {
@@ -243,6 +260,7 @@
     {
       "id": "optic-18",
       "name": "Burris A R332",
+      "urlName": "burris-a-r332",
       "category": "optic",
       "statModifier": [
         {
@@ -267,6 +285,7 @@
       "id": "topSight-1",
       "category": "topSight",
       "name": "Red Dot Sight",
+      "urlName": "red-dot-sight",
       "statModifier": [
         {
           "stat": "control",
@@ -282,6 +301,7 @@
       "id": "topSight-2",
       "category": "topSight",
       "name": "Holo Sight",
+      "urlName": "holo-sight",
       "statModifier": [
         {
           "stat": "control",
@@ -297,6 +317,7 @@
       "id": "cantedSight-1",
       "category": "cantedSight",
       "name": "Ironsight",
+      "urlName": "ironsight",
       "statModifier": [
         {
           "stat": "control",
@@ -312,6 +333,7 @@
       "id": "cantedSight-2",
       "category": "cantedSight",
       "name": "Canted Red Dot Sight",
+      "urlName": "canted-red-dot-sight",
       "statModifier": [
         {
           "stat": "control",
@@ -327,6 +349,7 @@
       "id": "cantedSight-3",
       "category": "cantedSight",
       "name": "Holo Dot Sight",
+      "urlName": "holo-dot-sight",
       "statModifier": [
         {
           "stat": "control",
@@ -342,6 +365,7 @@
       "id": "cantedSight-4",
       "category": "cantedSight",
       "name": "Canted F U Sight",
+      "urlName": "canted-f-u-sight",
       "statModifier": [
         {
           "stat": "control",
@@ -357,6 +381,7 @@
       "id": "barrel-1",
       "category": "barrel",
       "name": "Compensator",
+      "urlName": "compensator",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -372,6 +397,7 @@
       "id": "barrel-2",
       "category": "barrel",
       "name": "Flash Hider",
+      "urlName": "flash-hider",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -387,6 +413,7 @@
       "id": "underbarrel-1",
       "category": "underbarrel",
       "name": "Vertical Grip",
+      "urlName": "vertical-grip",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -402,6 +429,7 @@
       "id": "underbarrel-2",
       "category": "underbarrel",
       "name": "S E-5 Grip",
+      "urlName": "s-e-5-grip",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -417,6 +445,7 @@
       "id": "underbarrel-3",
       "category": "underbarrel",
       "name": "B-25 URK",
+      "urlName": "b-25-urk",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -436,6 +465,7 @@
       "id": "sideRail-1",
       "category": "sideRail",
       "name": "Flashlight",
+      "urlName": "flashlight",
       "statModifier": [
         {
           "stat": "control",
@@ -450,6 +480,7 @@
     {
       "id": "sideRail-2",
       "name": "Tactical Flashlight",
+      "urlName": "tactical-flashlight",
       "category": "sideRail",
       "statModifier": [
         {
@@ -465,6 +496,7 @@
     {
       "id": "sideRail-3",
       "name": "Redlaser",
+      "urlName": "redlaser",
       "category": "sideRail",
       "statModifier": [
         {
@@ -480,6 +512,7 @@
     {
       "id": "sideRail-4",
       "name": "Greenlaser",
+      "urlName": "greenlaser",
       "category": "sideRail",
       "statModifier": [
         {
@@ -495,6 +528,7 @@
     {
       "id": "sideRail-5",
       "name": "Rangefinder",
+      "urlName": "rangefinder",
       "category": "sideRail",
       "statModifier": [
         {
@@ -510,6 +544,7 @@
     {
       "id": "sideRail-6",
       "name": "Searchlight",
+      "urlName": "searchlight",
       "category": "sideRail",
       "statModifier": [
         {
@@ -524,8 +559,9 @@
     },
     {
       "id": "magazine-1",
-      "category": "magazine",
       "name": "Quick-A (30)",
+      "urlName": "quick-A-(30)",
+      "category": "magazine",
       "statModifier": [
         {
           "stat": "verticalRecoil",
@@ -543,8 +579,9 @@
     },
     {
       "id": "magazine-2",
-      "category": "magazine",
       "name": "Extended-A (45)",
+      "urlName": "extended-a-(45)",
+      "category": "magazine",
       "statModifier": [
         {
           "stat": "verticalRecoil",

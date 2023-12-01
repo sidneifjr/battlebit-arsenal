@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   Select,
   SelectContent,
@@ -40,7 +41,7 @@ export const GunsmithAttachmentSlot = ({
           {attachmentOptions.map((option: Option) => {
             return (
               <SelectItem key={option.id} value={option.name}>
-                {option.name}
+                <Link href={`&optic=${option.name}`}>{option.name}</Link>
               </SelectItem>
             )
           })}

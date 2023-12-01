@@ -51,7 +51,7 @@ export const GunsmithStats = ({ stats }: Stats) => {
   /**
     Quando houver alteração no valor de um stat, aplicar uma alteração na cor ou um "risco" no valor antigo.
 
-    1) Eu poderia comparar o valor inicial com o novo valor da propriedade específica.
+    1) Eu poderia comparar o valor inicial com o novo valor da propriedade específica. ("Time Travel" abordado nos docs do React seria uma opção).
     2) Então, buscar pelo stat correspondente a partir do "ref" na ul.
   */
   useEffect(() => {
