@@ -20,15 +20,19 @@ Ao selecionar um attachment em uma categoria, os seus modificadores de atributos
 
 - [x] Elaborar um gráfico demonstrando a distância efetiva das armas, usando Highcharts, ChartJS ou semelhante.
 
-- [ ] Ao alterar o acessório no Gunsmith, comparar o valor novo (modificado pelo attachment) com o valor original e exibir o modificado em verde (caso melhore) ou vermelho (caso piore).
+- [x] Simplificar GunsmithComponent e quebrar em partes menores, se possível.
+
+- [ ] Salvar informações do state na URL, permitindo o compartilhamento da URL.
+
+- [ ] (BUG) Quando eu adiciono os parâmetros na URL manualmente, a página abre, porém os mesmos são substituídos pelos valores padrão, quando não há um item selecionado (-).
+
+- [ ] Aplicar um minificador na URL, caso ela fique muito grande.
+
+- [ ] Ao alterar o acessório no Gunsmith, comparar o valor novo (modificado pelo attachment) com o valor original e exibir o modificado em verde (caso melhore) ou vermelho (caso piore) (refs podem ser úteis).
 
 - [ ] Implementar cálculo do "Time To Kill" (TTK), comparando o dano da arma com o HP de cada classe e tipo de armadura.
 
 - [ ] Aplicar efeito sutil de partículas em Gunsmith, semelhante ao de Polygon.
-
-- [ ] Salvar informações do state na URL, permitindo o compartilhamento da URL.
-
-- [ ] Aplicar um minificador na URL, caso ela fique muito grande.
 
 - [ ] Menu na parte inferior da página, no qual o usuário pode adicionar uma parte de seu equipamento e salvá-lo, servindo como uma preview rápida de seu loadout (armas primárias, secundárias, etc.)
 
@@ -134,3 +138,9 @@ pnpm build
 7. Boas práticas com TypeScript e nomeando interfaces: https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html
 
 8. Commits semânticos de acordo com as guidelines do Angular (usado a partir de 27/11/2023): https://www.conventionalcommits.org/
+
+9. Armazenamento de estado na URL: https://www.youtube.com/watch?v=ukpgxEemXsk&t
+
+10. "Remover" (ou desconsiderar) propriedades específicas em um objeto: https://bobbyhadz.com/blog/react-remove-key-from-state-object
+
+https://gameplay.tips/guides/battlebit-remastered-time-to-kill-ttk-for-each-weapon.html
