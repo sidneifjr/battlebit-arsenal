@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { Button } from './ui/button'
 
 interface Calculator {
   damage: number
@@ -52,13 +53,13 @@ export const TTKCalculator = ({ damage, fireRate, category }: Calculator) => {
       <div className="mb-4 flex justify-center gap-4">
         {healthOptions.map((item: number) => {
           return (
-            <button
+            <Button
               key={uuidv4()}
               className="bg-white text-black font-bold py-2 px-4 hover:bg-slate-200/90 transition"
               onClick={() => handleHealth(item)}
             >
               {item} HP
-            </button>
+            </Button>
           )
         })}
       </div>
