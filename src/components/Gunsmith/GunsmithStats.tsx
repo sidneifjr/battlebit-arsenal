@@ -1,8 +1,6 @@
-import Image from 'next/image'
-
 import { TTKCalculator } from '../ttk-calculator'
 
-import weaponsData from '../../json/weapons.json'
+import { ClassSuggestion } from '../class-suggestion'
 
 interface Stats {
   stats: {
@@ -35,7 +33,6 @@ interface Stats {
 }
 
 export const GunsmithStats = ({ stats }: Stats) => {
-  // Removendo stats que não serão úteis.
   const {
     id,
     name,
@@ -46,86 +43,9 @@ export const GunsmithStats = ({ stats }: Stats) => {
     rangeData,
     firingMode,
     ...statsWithoutUndesirables
-  } = stats
+  } = stats // Removendo stats que não serão úteis.
 
   const getKeyValuePairsFromStats = Object.entries(statsWithoutUndesirables)
-
-  const getWeaponsFromCategory = weaponsData.weapons.filter((item) => {
-    return item.category === category
-  })
-
-  const getStatAverages = () => {
-    const getReloadSpeed = getWeaponsFromCategory.reduce(
-      (accumulator: number, currentValue: number) => {
-        return Number(accumulator) + Number(currentValue.reloadTime)
-      },
-      []
-    )
-
-    const getAimDownTime = getWeaponsFromCategory.reduce(
-      (accumulator: number, currentValue: number) => {
-        return Number(accumulator) + Number(currentValue.aimDownTime)
-      },
-      []
-    )
-
-    const getDrawSpeed = getWeaponsFromCategory.reduce(
-      (accumulator: number, currentValue: number) => {
-        return Number(accumulator) + Number(currentValue.drawSpeed)
-      },
-      []
-    )
-
-    const averageReloadSpeed = getReloadSpeed / getWeaponsFromCategory.length
-    const averageAimDownTime = getAimDownTime / getWeaponsFromCategory.length
-    const averageDrawSpeed = getDrawSpeed / getWeaponsFromCategory.length
-
-    if (
-      stats.reloadTime > averageReloadSpeed &&
-      stats.aimDownTime > averageAimDownTime &&
-      stats.drawSpeed > averageDrawSpeed
-    ) {
-      return (
-        <p className="text-2xl text-center py-4 flex justify-center gap-2">
-          Recommended class:{' '}
-          <span className="flex items-center gap-2">
-            <Image
-              src="/classes/assault-icon.webp"
-              width={30}
-              height={30}
-              alt="assault"
-            />
-            Assault
-          </span>
-        </p>
-      )
-    } else {
-      return (
-        <p className="text-2xl text-center py-4 flex justify-center gap-2">
-          Recommended class:{' '}
-          <span className="flex items-center gap-2">
-            <Image
-              src="/classes/medic-icon.webp"
-              width={30}
-              height={30}
-              alt="assault"
-            />
-            Medic
-          </span>{' '}
-          /
-          <span className="flex items-center gap-2">
-            <Image
-              src="/classes/engineer-icon.webp"
-              width={30}
-              height={30}
-              alt="assault"
-            />
-            Engineer
-          </span>
-        </p>
-      )
-    }
-  }
 
   /**
     Quando houver alteração no valor de um stat, aplicar uma alteração na cor ou um "risco" no valor antigo.
@@ -138,10 +58,10 @@ export const GunsmithStats = ({ stats }: Stats) => {
   // }, [stats])
 
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-8">
       {/* {stats.category === "Light Support Gun" || stats.category === "Light Machine Gun" || stats.category === "Sniper Rifle" ? {getStatAverages()} : ''} */}
 
-      {getStatAverages()}
+      <ClassSuggestion stats={stats} />
 
       <strong className="pb-2 block">Stats</strong>
 
