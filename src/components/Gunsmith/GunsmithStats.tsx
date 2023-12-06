@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { TTKCalculator } from '../ttk-calculator'
 
 interface Stats {
   stats: {
@@ -31,8 +31,6 @@ interface Stats {
 }
 
 export const GunsmithStats = ({ stats }: Stats) => {
-  const ref = useRef(null)
-
   // Removendo stats que não serão úteis.
   const {
     id,
@@ -54,18 +52,18 @@ export const GunsmithStats = ({ stats }: Stats) => {
     1) Eu poderia comparar o valor inicial com o novo valor da propriedade específica. ("Time Travel" abordado nos docs do React seria uma opção).
     2) Então, buscar pelo stat correspondente a partir do "ref" na ul.
   */
-  useEffect(() => {
-    console.log(stats)
-  }, [stats])
+  // useEffect(() => {
+  //   console.log(stats)
+  // }, [stats])
 
   return (
     <div className="w-full pt-16">
       <strong className="pb-2 block">Stats</strong>
 
       {/**
-       * Animar as barras de stats, ao entrar na página ou no viewport do usuário.
+       * Animar as barras de stats, ao entrar no viewport do usuário.
        */}
-      <ul ref={ref}>
+      <ul>
         {getKeyValuePairsFromStats.map(
           ([key, value]) =>
             key !== 'rangeData' && (
@@ -86,6 +84,12 @@ export const GunsmithStats = ({ stats }: Stats) => {
             )
         )}
       </ul>
+
+      <TTKCalculator
+        damage={stats.damage}
+        fireRate={stats.fireRate}
+        category={stats.category}
+      />
     </div>
   )
 }
