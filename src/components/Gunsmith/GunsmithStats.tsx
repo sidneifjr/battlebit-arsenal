@@ -1,4 +1,8 @@
+import Image from 'next/image'
+
 import { TTKCalculator } from '../ttk-calculator'
+
+import weaponsData from '../../json/weapons.json'
 
 interface Stats {
   stats: {
@@ -46,6 +50,83 @@ export const GunsmithStats = ({ stats }: Stats) => {
 
   const getKeyValuePairsFromStats = Object.entries(statsWithoutUndesirables)
 
+  const getWeaponsFromCategory = weaponsData.weapons.filter((item) => {
+    return item.category === category
+  })
+
+  const getStatAverages = () => {
+    const getReloadSpeed = getWeaponsFromCategory.reduce(
+      (accumulator: number, currentValue: number) => {
+        return Number(accumulator) + Number(currentValue.reloadTime)
+      },
+      []
+    )
+
+    const getAimDownTime = getWeaponsFromCategory.reduce(
+      (accumulator: number, currentValue: number) => {
+        return Number(accumulator) + Number(currentValue.aimDownTime)
+      },
+      []
+    )
+
+    const getDrawSpeed = getWeaponsFromCategory.reduce(
+      (accumulator: number, currentValue: number) => {
+        return Number(accumulator) + Number(currentValue.drawSpeed)
+      },
+      []
+    )
+
+    const averageReloadSpeed = getReloadSpeed / getWeaponsFromCategory.length
+    const averageAimDownTime = getAimDownTime / getWeaponsFromCategory.length
+    const averageDrawSpeed = getDrawSpeed / getWeaponsFromCategory.length
+
+    if (
+      stats.reloadTime > averageReloadSpeed &&
+      stats.aimDownTime > averageAimDownTime &&
+      stats.drawSpeed > averageDrawSpeed
+    ) {
+      return (
+        <p className="text-2xl text-center py-4 flex justify-center gap-2">
+          Recommended class:{' '}
+          <span className="flex items-center gap-2">
+            <Image
+              src="/classes/assault-icon.webp"
+              width={30}
+              height={30}
+              alt="assault"
+            />
+            Assault
+          </span>
+        </p>
+      )
+    } else {
+      return (
+        <p className="text-2xl text-center py-4 flex justify-center gap-2">
+          Recommended class:{' '}
+          <span className="flex items-center gap-2">
+            <Image
+              src="/classes/medic-icon.webp"
+              width={30}
+              height={30}
+              alt="assault"
+            />
+            Medic
+          </span>{' '}
+          /
+          <span className="flex items-center gap-2">
+            <Image
+              src="/classes/engineer-icon.webp"
+              width={30}
+              height={30}
+              alt="assault"
+            />
+            Engineer
+          </span>
+        </p>
+      )
+    }
+  }
+
   /**
     Quando houver alteração no valor de um stat, aplicar uma alteração na cor ou um "risco" no valor antigo.
 
@@ -58,11 +139,12 @@ export const GunsmithStats = ({ stats }: Stats) => {
 
   return (
     <div className="w-full pt-16">
+      {/* {stats.category === "Light Support Gun" || stats.category === "Light Machine Gun" || stats.category === "Sniper Rifle" ? {getStatAverages()} : ''} */}
+
+      {getStatAverages()}
+
       <strong className="pb-2 block">Stats</strong>
 
-      {/**
-       * Animar as barras de stats, ao entrar no viewport do usuário.
-       */}
       <ul>
         {getKeyValuePairsFromStats.map(
           ([key, value]) =>
