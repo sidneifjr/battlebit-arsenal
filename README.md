@@ -10,11 +10,9 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 
 - [x] Alterar atributos da arma selecionada, ao equipar um acessório em Gunsmith.
 
-Ao selecionar um attachment em uma categoria, os seus modificadores de atributos serão aplicados (positivos ou negativos).
+Ao selecionar um acessório, os seus modificadores de atributos serão aplicados (positivos ou negativos).
 
-1. Afeta os valores exibidos em "Stats".
-
-2. Alguns attachments não possuem modificador.
+Os mesmos afetam os valores exibidos em "Stats", porém alguns acessórios não possuem modificador.
 
 - [x] Permitir ordenação dos itens presentes na listagem de armas, a partir de um determinado stat.
 
@@ -22,69 +20,9 @@ Ao selecionar um attachment em uma categoria, os seus modificadores de atributos
 
 - [x] Simplificar GunsmithComponent e quebrar em partes menores, se possível.
 
-- [ ] Salvar informações do state na URL, permitindo o compartilhamento da URL.
+- [x] Licença Apache.
 
-- [ ] (BUG) Quando eu adiciono os parâmetros na URL manualmente, a página abre, porém os mesmos são substituídos pelos valores padrão, quando não há um item selecionado (-).
-
-- [ ] Aplicar um minificador na URL, caso ela fique muito grande.
-
-- [ ] Ao alterar o acessório no Gunsmith, comparar o valor novo (modificado pelo attachment) com o valor original e exibir o modificado em verde (caso melhore) ou vermelho (caso piore) (refs podem ser úteis).
-
-- [ ] Implementar cálculo do "Time To Kill" (TTK), comparando o dano da arma com o HP de cada classe e tipo de armadura.
-
-- [ ] Aplicar efeito sutil de partículas em Gunsmith, semelhante ao de Polygon.
-
-- [ ] Menu na parte inferior da página, no qual o usuário pode adicionar uma parte de seu equipamento e salvá-lo, servindo como uma preview rápida de seu loadout (armas primárias, secundárias, etc.)
-
-- [ ] Permitir nomeação das builds como uma "blueprint", recebendo um nome pelo usuário (inicialmente, salvar no LocalStorage e, depois, salvar na URL).
-
-- [ ] Permitir o comparativo de duas ou mais armas, analisando suas estatísticas.
-
-- [ ] Permitir visualização da arma em 2D ou 3D (semelhante à wiki do Team Fortress 2; porém, é para o longo prazo, pois não há ferramentas de IA atualmente).
-
-- [ ] Gerar um script que irá analisar as propriedades de uma arma e designar a classe mais apropriada.
-
-Exemplo: Assault possui bônus em reload speed e ADS, assim armas fracas em tais categorias se beneficiam mais.
-
-Posso calcular o valor médio de cada atributo para uma categoria de armas; para as armas abaixo da média, Assault seria recomendado.
-
-Armas como SMGs e a ACR seriam recomendadas para um Medic, pois o bônus de agilidade ajudaria em emergências, esquiva dos inimigos e chegar mais rapidamente aos companheiros para revivê-los.
-
-- [ ] Implementar um backend com Node.js ou Firebase no futuro.
-
-- [ ] Licença Apache: assim, outros podem colaborar com atualizações nos valores de cada arma, com o passar do tempo.
-
-Assim, não dependem apenas de mim para manter a ferramenta em paridade com a versão mais recente do jogo.
-
-(Lembrando que o jogo ainda está em Early Access).
-
-- [ ] Considerar uma forma de monetização não-predatória (propaganda, web scraper, etc.). Buscar a melhor opção e se isso poderia se tornar um problema com os devs do jogo.
-
-Patreon é uma opção, para que os próprios players e streamers possam doar para o desenvolvimento contínuo da ferramenta com o tempo.
-
-Assim, evito lucrar diretamente com o IP de outros e a quebra de layout causada pelas propagandas (o site fica mais "cheap" e pode passar uma má impressão de ganância).
-
-É importante notar que o sym.gg não usa propagandas.
-
-- [ ] Permitir que o usuário acesse a sua conta, através da API da Steam; porém, analisar o valor prático e o que posso acessar. (aprendizado de Next Auth)
-
-- [ ] Considerar se o SteamDB pode ser útil: exibir dados sobre o jogo, contagem de usuários, notícias relevantes (updates) e etc; isso é informação relevante para o produto.
-
-- [ ] "Fatiar" programaticamente as imagens das armas, para que eu possa aplicar position: relative nas mesmas e os boxes do attachment possam usar position: absolute.
-
-- [ ] Um sistema de votação, onde os usuários/comunidade poderiam votar sobre quais armas são as mais apropriadas para determinado mapa.
-
-Por exemplo:
-
-- M200, melhor usada em:
-
-- Valley;
-- Namak;
-- Tensatown;
-
-Assim, facilita a compreensão do game sense do jogo; tentativa e erro em cada partida com um mapa e com determinada arma não é mais obrigatório.
-
-Por exemplo: L96 com small magazine e 6x scope => Lion's Den.
+- [x] Implementar cálculo do "Time To Kill" (TTK).
 
 ## Getting Started
 
@@ -142,5 +80,3 @@ pnpm build
 9. Armazenamento de estado na URL: https://www.youtube.com/watch?v=ukpgxEemXsk&t
 
 10. "Remover" (ou desconsiderar) propriedades específicas em um objeto: https://bobbyhadz.com/blog/react-remove-key-from-state-object
-
-https://gameplay.tips/guides/battlebit-remastered-time-to-kill-ttk-for-each-weapon.html
