@@ -24,6 +24,8 @@ Os mesmos afetam os valores exibidos em "Stats", porém alguns acessórios não 
 
 - [x] Implementar cálculo do "Time To Kill" (TTK).
 
+- [x] Desenvolver um script que irá analisar as propriedades da arma seleciona e sugerir a classe mais apropriada.
+
 ## Getting Started
 
 ### Dev
