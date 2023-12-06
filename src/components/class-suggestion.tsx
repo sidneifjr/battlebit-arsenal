@@ -3,9 +3,11 @@ import Image from 'next/image'
 import weaponsData from '../json/weapons.json'
 
 interface ClassSuggestion {
-  category: string
-  reloadTime: number
-  aimDownTime: number
+  stats: {
+    category: string
+    reloadTime: number
+    aimDownTime: number
+  }
 }
 
 /**
@@ -23,9 +25,9 @@ interface ClassSuggestion {
  * 4) Além disso, usar um Extended Magazine altera o Reload Speed e Aim Down Time do armamento, o que será refletido na recomendação.
  */
 
-export const ClassSuggestion = (stats: ClassSuggestion) => {
+export const ClassSuggestion = (props: ClassSuggestion) => {
   const getWeaponsFromCategory = weaponsData.weapons.filter((item) => {
-    return item.category === stats.category
+    return item.category === props.stats.category
   })
 
   const getStatAverages = () => {
@@ -47,8 +49,8 @@ export const ClassSuggestion = (stats: ClassSuggestion) => {
     const averageAimDownTime = getAimDownTime / getWeaponsFromCategory.length
 
     if (
-      stats.reloadTime > averageReloadSpeed &&
-      stats.aimDownTime > averageAimDownTime
+      props.stats.reloadTime > averageReloadSpeed &&
+      props.stats.aimDownTime > averageAimDownTime
     ) {
       return (
         <p className="text-2xl text-center py-4 flex justify-center gap-2">
