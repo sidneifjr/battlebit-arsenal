@@ -4,15 +4,24 @@ O objetivo é criar uma aplicação web que permita a criação e compartilhamen
 
 A intenção é permitir que o usuário possa definir seus armamentos, tomar decisões informadas sobre seu equipamento e compartilhar com seus amigos ou membros de squad.
 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![PNPM](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)
+![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
+![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
 ## To Do
 
 - [x] Exibir uma listagem das armas e seus vários atributos.
 
 - [x] Alterar atributos da arma selecionada, ao equipar um acessório em Gunsmith.
 
-Ao selecionar um acessório, os seus modificadores de atributos serão aplicados (positivos ou negativos).
+  Ao selecionar um acessório, os seus modificadores de atributos serão aplicados (positivos ou negativos).
 
-Os mesmos afetam os valores exibidos em "Stats", porém alguns acessórios não possuem modificador.
+  Os mesmos afetam os valores exibidos em "Stats", porém alguns acessórios não possuem modificador.
 
 - [x] Permitir ordenação dos itens presentes na listagem de armas, a partir de um determinado stat.
 
@@ -25,6 +34,10 @@ Os mesmos afetam os valores exibidos em "Stats", porém alguns acessórios não 
 - [x] Implementar cálculo do "Time To Kill" (TTK).
 
 - [x] Desenvolver um script que irá analisar as propriedades da arma seleciona e sugerir a classe mais apropriada.
+
+- [x] Permitir que o usuário salve suas blueprints, defina um nome e salve no localStorage.
+
+  Ex.: Lion's Den => AK-74 com "Extended-A" e "Vertical Grip".
 
 ## Getting Started
 
@@ -46,7 +59,7 @@ pnpm build
 
 ```
 
-## Tecnologias
+## Tech
 
 - React
 - TypeScript
