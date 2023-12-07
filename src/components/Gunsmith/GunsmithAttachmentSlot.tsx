@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import {
   Select,
   SelectContent,
@@ -18,12 +19,14 @@ interface Attachment {
 }
 
 interface GunsmithAttachmentSlot {
+  value: any
   slotType: string
   attachmentOptions: Attachment[]
   onClick: (e: string) => void
 }
 
 export const GunsmithAttachmentSlot = ({
+  value,
   slotType,
   attachmentOptions,
   onClick,
@@ -32,7 +35,11 @@ export const GunsmithAttachmentSlot = ({
     <div className="rounded-full flex flex-col flex-1">
       <small className="capitalize mb-2">{slotType}</small>
 
-      <Select data-slot={slotType} onValueChange={(e) => onClick(e)}>
+      <Select
+        value={value?.name} // esse campo aceita apenas strings.
+        data-slot={slotType}
+        onValueChange={(e) => onClick(e)}
+      >
         <SelectTrigger className="w-44 rounded-xl border-white">
           <SelectValue className="capitalize" placeholder={'-'} />
         </SelectTrigger>
