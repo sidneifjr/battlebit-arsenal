@@ -10,6 +10,17 @@ export const metadata: Metadata = {
     default: 'Battlebit Arsenal',
   },
   description: 'Create & share your build with your friends.',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/shortcut-icon.png',
+    apple: '/icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/apple-touch-icon-precomposed.png',
+    },
+  },
+  // themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -19,6 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="theme-color" content="#fff" />
+      </head>
+
       <body className={`${GeistSans.className} relative`}>
         {/* <Menu /> */}
 
