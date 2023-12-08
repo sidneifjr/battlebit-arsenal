@@ -41,6 +41,8 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 
 - [x] PWA.
 
+- [x] Mover imagens dos armamentos para uma pasta própria, ainda dentro de public.
+
 ## Getting Started
 
 ### Dev
