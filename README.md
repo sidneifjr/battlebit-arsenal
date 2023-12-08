@@ -1,9 +1,5 @@
 # Battlebit Arsenal
 
-O objetivo é criar uma aplicação web que permita a criação e compartilhamento de builds e loadouts para Battlebit Remastered.
-
-A intenção é permitir que o usuário possa definir seus armamentos, tomar decisões informadas sobre seu equipamento e compartilhar com seus amigos ou membros de squad.
-
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -12,6 +8,10 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
 ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
+O objetivo é criar uma aplicação web que permita a criação e compartilhamento de builds e loadouts para Battlebit Remastered.
+
+A intenção é permitir que o usuário possa definir seus armamentos, tomar decisões informadas sobre seu equipamento e compartilhar com seus amigos ou membros de squad.
 
 ## To Do
 
@@ -38,6 +38,8 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 - [x] Permitir que o usuário salve suas blueprints, defina um nome e salve no localStorage.
 
   Ex.: Lion's Den => AK-74 com "Extended-A" e "Vertical Grip".
+
+- [x] PWA.
 
 ## Getting Started
 
