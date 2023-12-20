@@ -28,8 +28,6 @@ export default async function Home() {
       <ServerInfo data={getServersData} />
 
       <WeaponryList />
-
-      {/* <BottomMenu /> */}
     </section>
   )
 }

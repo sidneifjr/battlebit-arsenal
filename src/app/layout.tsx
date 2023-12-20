@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 
 import { GeistSans } from 'geist/font/sans'
 
+import { LoadoutShortcut } from '@/components/loadout-shortcut'
+
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -35,9 +37,9 @@ export default function RootLayout({
       </head>
 
       <body className={`${GeistSans.className} relative`}>
-        {/* <Menu /> */}
-
         <main>{children}</main>
+
+        <LoadoutShortcut />
       </body>
     </html>
   )
