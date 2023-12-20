@@ -161,7 +161,7 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
           </span>
         )}
 
-        <Gunsmith.AttachmentContainer>
+        <div className="flex-1 pt-12 flex flex-col items-center">
           <div className="flex gap-16">
             <Gunsmith.AttachmentSlot
               value={attachments?.optic}
@@ -223,7 +223,7 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
               onClick={(e: any) => handleAttachments(e)}
             />
           </div>
-        </Gunsmith.AttachmentContainer>
+        </div>
 
         <form
           onSubmit={(el) => handleBlueprint(el)}

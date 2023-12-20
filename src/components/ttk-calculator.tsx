@@ -8,13 +8,13 @@ interface Calculator {
   category: string
 }
 
-/*
-  Como realizar o cálculo do TTK:
-
-  1) A firerate representa o RPM (rounds per minute) da arma. É necessário dividir tal valor por 60, para então obtermos a quantidade de disparos por segundo.
-  2) Ao calcular com o expoente -1, obtemos quantos segundos levam para um disparo ser efetuado.
-  3) Então, tais segundos são multiplicados pela quantidade de disparos necessários para eliminar um alvo.
- */
+/**
+ * Cálculo do Time To Kill (TTK):
+ *
+ * 1) A firerate representa o RPM (rounds per minute) da arma. É necessário dividir tal valor por 60, para então obtermos a quantidade de disparos por segundo.
+ * 2) Ao calcular com o expoente -1, obtemos quantos segundos levam para um disparo ser efetuado.
+ * 3) Então, tais segundos são multiplicados pela quantidade de disparos necessários para eliminar um alvo.
+ * */
 export const TTKCalculator = ({ damage, fireRate, category }: Calculator) => {
   const [health, setHealth] = useState<number>(100)
   const healthOptions = [100, 125, 150, 175]
