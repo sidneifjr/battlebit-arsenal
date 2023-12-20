@@ -9,9 +9,9 @@
 ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-O objetivo é criar uma aplicação web que permita a criação e compartilhamento de builds e loadouts para Battlebit Remastered.
+Uma aplicação web para criação e compartilhamento de loadouts para Battlebit Remastered.
 
-A intenção é permitir que o usuário possa definir seus armamentos, tomar decisões informadas sobre seu equipamento e compartilhar com seus amigos ou membros de squad.
+Defina seus armamentos, faça decisões informadas sobre seu equipamento e compartilhe com seus amigos ou esquadrão.
 
 ## To Do
 
@@ -45,50 +45,7 @@ A intenção é permitir que o usuário possa definir seus armamentos, tomar dec
 
 - [x] Remover GunsmithAttachmentContainer e mover seu conteúdo para o principal.
 
-- [ ] Criar um before e usar como fundo, com os estilos a seguir:
-
-  position: absolute;
-  z-index: -1;
-  content: "";
-  top: 0%;
-  bottom: 10%;
-  width: 150%;
-  left: -25%;
-  background: linear-gradient(83.21deg,#3245ff 0%,#bc52ee 100%);
-  -webkit-mask-image: radial-gradient(rgba(0,0,0,.45),transparent 70%);
-  mask-image: radial-gradient(rgba(0,0,0,.45),transparent 70%);
-
-- [ ] Em "ttkcalculator", mover o estado para a url.
-
-- [ ] Modal para exibir os dados do loadout atual, como uma preview rápida dos equipamentos selecionados.
-
-- [ ] Mover os dados das blueprints salvas para a URL, permitindo o compartilhamento entre usuários.
-
-- [ ] Animar as barras em GunsmithStats, ao entrar no viewport do usuário.
-
-- [ ] Salvar informações do state na URL, permitindo o compartilhamento da URL.
-
-- [ ] Aplicar um minificador na URL, caso ela fique muito grande.
-
-- [ ] Ao alterar o acessório no Gunsmith, comparar o valor novo (modificado pelo attachment) com o valor original e exibir o modificado em verde (caso melhore) ou vermelho (caso piore) (refs podem ser úteis).
-
-- [ ] Aplicar efeito sutil de partículas em Gunsmith, semelhante ao de Polygon.
-
-- [ ] Permitir o comparativo de duas ou mais armas, analisando suas estatísticas.
-
-- [ ] Permitir visualização da arma em 2D ou 3D (semelhante à wiki do Team Fortress 2; porém, é para o longo prazo, pois não há ferramentas de IA atualmente).
-
-- [ ] Criar uma tela 'loadout', onde eu possuo:
-
-- Na horizontal:
-
-Dois blocos grandes: um para arma primária, outro para secundária.
-
-Três blocos menores logo abaixo: gadget primário, secundário e throwables.
-
-- Na vertical, à direita:
-
-Após o nome da classe, são exibidos três blocos em uma coluna: capacete, armadura e mochila.
+- [x] Armazenar as informações do loadout definido pelo usuário em um context.
 
 ## Getting Started
 
@@ -122,7 +79,7 @@ pnpm build
 
 ### APIs
 
-- Battlebit API (oficial, porém em estado inicial; fornece apenas dados dos servidores atualmente ativos).
+- Battlebit API (oficial, porém fornece apenas dados dos servidores atualmente ativos).
 - Steam Web API (para obter informações do jogo e notícias; implementação a considerar).
 
 ### Aprendizado

@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans'
 
 import { LoadoutShortcut } from '@/components/loadout-shortcut'
 
+import { LoadoutProvider } from '@/contexts/loadout-context'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -37,9 +38,11 @@ export default function RootLayout({
       </head>
 
       <body className={`${GeistSans.className} relative`}>
-        <main>{children}</main>
+        <LoadoutProvider>
+          <main>{children}</main>
 
-        <LoadoutShortcut />
+          <LoadoutShortcut />
+        </LoadoutProvider>
       </body>
     </html>
   )

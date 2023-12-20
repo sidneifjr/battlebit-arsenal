@@ -1,32 +1,19 @@
 'use client'
 
 import Image from 'next/image'
-import { FormEvent, useEffect, useState } from 'react'
+
+import { useEffect } from 'react'
 
 import { Gunsmith } from '.'
 
-import attachmentData from '../../json/attachments.json'
-import weaponData from '../../json/weapons.json'
+import WeaponData from '../../json/weapons.json'
+
+import { useLoadout } from '@/contexts/loadout-context'
+
 import { Button } from '../ui/button'
 
 interface GunsmithProps {
   weaponName: string
-}
-
-interface AttachmentsItem {
-  name: string
-  urlName: string
-  statModifier: []
-}
-
-interface Attachments {
-  optic?: AttachmentsItem
-  topSight?: AttachmentsItem
-  cantedSight?: AttachmentsItem
-  barrel?: AttachmentsItem
-  magazine?: AttachmentsItem
-  underbarrel?: AttachmentsItem
-  sideRail?: AttachmentsItem
 }
 
 interface WeaponInfo {
@@ -58,78 +45,28 @@ interface WeaponInfo {
 }
 
 export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
+  const {
+    weapon,
+    setWeapon,
+    attachments,
+    setAttachments,
+    handleAttachments,
+    getAttachmentsFromCategory,
+    blueprintName,
+    setBlueprintName,
+    handleBlueprint,
+  } = useLoadout()
+
   const weaponNameWithoutURLParams = weaponName.replace(/%.*/, '') // remove os parâmetros de attachments presentes na URL.
 
   // A referência deve ser mantida, pois será necessária para resetar aos valores iniciais, após as modificações nos stats provenientes dos attachments.
-  const originalWeapon = weaponData.weapons.find(
-    (weaponDataItem) => weaponDataItem.pageName === weaponNameWithoutURLParams
+  const originalWeapon = WeaponData.weapons.find(
+    (WeaponDataItem) => WeaponDataItem.pageName === weaponNameWithoutURLParams
   ) as WeaponInfo
 
-  const [blueprintName, setBlueprintName] = useState<string>('')
-
-  const [weapon, setWeapon] = useState(originalWeapon)
-
-  const [attachments, setAttachments] = useState<Attachments>()
-
-  const getAttachmentsFromCategory = (category: string) => {
-    return attachmentData.attachments.filter(
-      (item) => item.category === category
-    )
-  }
-
-  const handleAttachments = (e: any) => {
-    const myAttachment = attachmentData.attachments.find(
-      (item) => item.name === e
-    )
-
-    setAttachments((prev) => ({
-      ...prev,
-      [myAttachment!.category]: myAttachment,
-    }))
-
-    setWeapon((prev) => {
-      const updatedWeapon = { ...prev }
-
-      const attachmentStatModifiers = myAttachment?.statModifier
-
-      if (attachmentStatModifiers !== 'none') {
-        attachmentStatModifiers?.forEach(
-          (item: { stat: string; modifier: number }) => {
-            const attachmentStat = item.stat
-            const attachmentModifier = item.modifier
-
-            updatedWeapon[attachmentStat] += attachmentModifier // soma o valor atual de uma estatística específica, com um dos modificadores provenientes do acessório selecionado.
-          }
-        )
-      }
-
-      return updatedWeapon
-    })
-  }
-
-  const handleBlueprint = (el: FormEvent) => {
-    el.preventDefault()
-
-    const form = el.target
-    const formInput = form.elements['blueprint']
-    const formInputValue = formInput.value.toLowerCase()
-
-    /**
-     * Permitir o armazenamento da blueprint apenas quando:
-     *
-     * 1) Um nome for definido para o mesmo.
-     * 2) Acessórios foram selecionados.
-     */
-    if (formInputValue && attachments !== undefined) {
-      const blueprintName = `${formInputValue}`
-      const blueprintWeapon = `${JSON.stringify(weapon.pageName)}`
-      const blueprintAttachments = `${JSON.stringify(attachments)}`
-
-      localStorage.setItem('blueprintName', blueprintName)
-      localStorage.setItem('blueprintWeapon', blueprintWeapon)
-      localStorage.setItem('blueprintAttachments', blueprintAttachments)
-    }
-  }
+  useEffect(() => {
+    setWeapon(originalWeapon)
+  }, [originalWeapon, setWeapon])
 
   useEffect(() => {
     if (localStorage.length) {
@@ -148,11 +85,11 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
         setAttachments(JSON.parse(lastSavedAttachments!))
       }
     }
-  }, [weaponName])
+  }, [weaponName, setAttachments, setBlueprintName])
 
   return (
     <Gunsmith.Root>
-      <Gunsmith.Title weaponName={weapon.name} />
+      <Gunsmith.Title weaponName={weapon?.name} />
 
       <div className="max-w-7xl mx-auto flex flex-col justify-center items-center">
         {blueprintName && (
@@ -194,8 +131,8 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
 
           <Image
             className="my-4"
-            src={weapon.icon}
-            alt={weapon.name}
+            src={weapon?.icon}
+            alt={weapon?.name}
             width={480}
             height={170}
             quality={100}
@@ -239,10 +176,10 @@ export const GunsmithComponent = ({ weaponName }: GunsmithProps) => {
           <Button className="rounded-xl">Save blueprint</Button>
         </form>
 
-        <Gunsmith.Stats stats={weapon} />
+        {weapon ? <Gunsmith.Stats stats={weapon} /> : ''}
 
-        {weapon.rangeData && (
-          <Gunsmith.RangeGraph rangeData={weapon.rangeData} />
+        {weapon?.rangeData && (
+          <Gunsmith.RangeGraph rangeData={weapon?.rangeData} />
         )}
       </div>
     </Gunsmith.Root>
