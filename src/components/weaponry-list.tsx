@@ -25,7 +25,6 @@ import {
 } from './ui/select'
 
 import { useState } from 'react'
-import { Separator } from './ui/separator'
 
 interface WeaponInfo {
   id: number
@@ -159,7 +158,7 @@ export const WeaponryList = () => {
 
           return (
             <Card key={weapon.id} className="flex-[calc(33.33%-1rem)]">
-              <CardHeader className="relative">
+              <CardHeader className="relative border-white border-b">
                 <div className="flex gap-4">
                   <Link
                     href={`/weapons/${weapon.pageName
@@ -200,8 +199,6 @@ export const WeaponryList = () => {
                     </div>
                   </div>
                 </div>
-
-                <Separator className="absolute right-0 bottom-0 left-0 bg-white" />
               </CardHeader>
 
               {/* Como disponho os parágrafos, de forma a ficarem como antes? Talvez CSS Grid Layout resolva. */}
